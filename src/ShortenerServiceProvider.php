@@ -38,15 +38,21 @@ class ShortenerServiceProvider extends ServiceProvider
 
         $this->publishes([
             $source => config_path('shortener.php'),
-        ], 'shortener::config');
+            __DIR__ . '/views' => resource_path('views/vendor/shortener'),
+        ], 'shortener');
 
         $this->loadRoutesFrom(__DIR__ . '/routes/web.php');
         $this->loadMigrationsFrom(__DIR__ . '/migrations');
 
 
         $this->publishes([
+            $source => config_path('shortener.php'),
             __DIR__ . '/views' => resource_path('views/vendor/shortener'),
-        ], 'shortener::view');
+            __DIR__ . '/migrations' => resource_path('database/migrations'),
+        ], 'shortener');
+//        $this->publishes([
+//            __DIR__ . '/views' => resource_path('views/vendor/shortener'),
+//        ], 'shortener::view');
         //            $this->publishes([
         //                __DIR__.'/path/to/config/courier.php' => config_path('courier.php'),
         //            ]);
