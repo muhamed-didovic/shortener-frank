@@ -29,27 +29,31 @@ class ShortenerServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $source = realpath($raw = __DIR__.'/config/shortener.php') ?: $raw;
-        if ($this->app instanceof LaravelApplication && $this->app->runningInConsole()) {
-            $this->publishes([
-                $source => config_path('shortener.php')
-            ]);
 
-            $this->loadRoutesFrom(__DIR__.'/routes/web.php');
-            $this->loadMigrationsFrom(__DIR__.'/migrations');
 
-            $this->loadViewsFrom(__DIR__ . '/views', 'shortener');
+        $source = realpath($raw = __DIR__ . '/config/shortener.php') ?: $raw;
+        //        if ($this->app instanceof LaravelApplication && $this->app->runningInConsole()) {
 
-            $this->publishes([
-                __DIR__.'/views' => resource_path('views/vendor/shortener'),
-            ]);
-//            $this->publishes([
-//                __DIR__.'/path/to/config/courier.php' => config_path('courier.php'),
-//            ]);
-        }
-//        elseif ($this->app instanceof LumenApplication) {
-//            $this->app->configure('shortener');
-//        }
+        $this->loadViewsFrom(__DIR__ . '/views', 'shortener');
+
+        $this->publishes([
+            $source => config_path('shortener.php'),
+        ], 'shortener::config');
+
+        $this->loadRoutesFrom(__DIR__ . '/routes/web.php');
+        $this->loadMigrationsFrom(__DIR__ . '/migrations');
+
+
+        $this->publishes([
+            __DIR__ . '/views' => resource_path('views/vendor/shortener'),
+        ], 'shortener::view');
+        //            $this->publishes([
+        //                __DIR__.'/path/to/config/courier.php' => config_path('courier.php'),
+        //            ]);
+        //        }
+        //        elseif ($this->app instanceof LumenApplication) {
+        //            $this->app->configure('shortener');
+        //        }
         $this->mergeConfigFrom($source, 'shortener');
     }
 
