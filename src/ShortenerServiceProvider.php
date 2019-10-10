@@ -29,21 +29,12 @@ class ShortenerServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-
-
         $source = realpath($raw = __DIR__ . '/config/shortener.php') ?: $raw;
         //        if ($this->app instanceof LaravelApplication && $this->app->runningInConsole()) {
 
         $this->loadViewsFrom(__DIR__ . '/views', 'shortener');
-
-        $this->publishes([
-            $source => config_path('shortener.php'),
-            __DIR__ . '/views' => resource_path('views/vendor/shortener'),
-        ], 'shortener');
-
         $this->loadRoutesFrom(__DIR__ . '/routes/web.php');
         $this->loadMigrationsFrom(__DIR__ . '/migrations');
-
 
         $this->publishes([
             $source => config_path('shortener.php'),
