@@ -25,12 +25,12 @@
     },
     "autoload": {
         "psr-4": {
-            "muhamed-didovic\\shortener-frank\\": "src"
+            "MuhamedDidovic\\Shortener\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "muhamed-didovic\\shortener-frank\\": "tests"
+            "MuhamedDidovic\\Shortener\\": "tests"
         }
     },
     "scripts": {

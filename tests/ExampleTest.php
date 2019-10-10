@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace muhamed-didovic\shortener-frank;
+namespace MuhamedDidovic\Shortener;
 
 class ExampleTest extends \PHPUnit\Framework\TestCase
 {

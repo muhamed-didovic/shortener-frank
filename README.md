@@ -38,7 +38,7 @@ $ composer require muhamed-didovic/shortener-frank
 ## Usage
 
 ``` php
-$skeleton = new muhamed-didovic\shortener-frank();
+$skeleton = new MuhamedDidovic\Shortener();
 echo $skeleton->echoPhrase('Hello, League!');
 ```
 
