@@ -39,7 +39,7 @@ class ShortenerServiceProvider extends ServiceProvider
         $this->publishes([
             $source => config_path('shortener.php'),
             __DIR__ . '/views' => resource_path('views/vendor/shortener'),
-            __DIR__ . '/migrations' => resource_path('database/migrations'),
+            __DIR__ . '/migrations' => database_path('migrations'),
         ], 'shortener');
 //        $this->publishes([
 //            __DIR__ . '/views' => resource_path('views/vendor/shortener'),
