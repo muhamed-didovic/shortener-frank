@@ -2,6 +2,7 @@
 
 namespace MuhamedDidovic\Shortener\Controllers;
 
+use Illuminate\Validation\Validator;
 use MuhamedDidovic\Shortener\Link;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -31,13 +32,11 @@ class LinkController extends BaseController
 
     public function store(Request $request)
     {
-        $this->validate($request, [
-//            'url' => 'required|url',
+        Validator::make($request, [
             'url' => 'required|active_url'
         ], [
             'url.required' => 'Please enter a URL to shorten.',
             'url.active_url' => 'Hmm, that doesn\'t look like a valid URL.'
-//            'url.url' => 'Hmm, that doesn\'t look like a valid URL.'
         ]);
 
         $link = Link::firstOrNew([
