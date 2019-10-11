@@ -2,12 +2,13 @@
 
 namespace MuhamedDidovic\Shortener\Controllers;
 
-use App\Link;
+use MuhamedDidovic\Shortener\Link;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Routing\Controller as BaseController;
 
-class LinkController extends Controller
+class LinkController extends BaseController
 {
     public function show(Request $request)
     {

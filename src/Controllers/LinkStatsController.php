@@ -3,10 +3,11 @@
 namespace MuhamedDidovic\Shortener\Controllers;
 
 use Cache;
-use App\Link;
+use MuhamedDidovic\Shortener\Link;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller as BaseController;
 
-class LinkStatsController extends Controller
+class LinkStatsController extends BaseController
 {
     public function show(Request $request)
     {
