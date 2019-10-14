@@ -6,12 +6,22 @@ use Cache;
 use MuhamedDidovic\Shortener\Link;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
+use MuhamedDidovic\Shortener\Traits\Response;
 
+/**
+ * Class LinkStatsController
+ * @package MuhamedDidovic\Shortener\Controllers
+ */
 class LinkStatsController extends BaseController
 {
+    use Response;
+    
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\JsonResponse|\Illuminate\Http\Response
+     */
     public function show(Request $request)
     {
-
         $code = $request->get('code');
         //todo: check cache
         $link = Cache::remember("stats.{$code}", 10, function () use ($code) {

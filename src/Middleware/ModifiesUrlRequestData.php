@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Middleware;
+namespace MuhamedDidovic\Shortener\Middleware;
 
 use Illuminate\Support\Facades\Validator;
 use Closure;
@@ -16,7 +16,6 @@ class ModifiesUrlRequestData
      */
     public function handle($request, Closure $next)
     {
-
         if (!$request->has('url')) {
             return $next($request);
         }
@@ -33,7 +32,7 @@ class ModifiesUrlRequestData
 //        }
 
         $validator = Validator::make($request->only('url'), [
-            'url' => 'url'
+            'url' => 'active_url'
         ]);
 
         if ($validator->fails()) {

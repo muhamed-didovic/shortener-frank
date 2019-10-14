@@ -2,15 +2,26 @@
 
 namespace MuhamedDidovic\Shortener\Controllers;
 
-use Illuminate\Validation\Validator;
+use Illuminate\Support\Facades\Validator;
 use MuhamedDidovic\Shortener\Link;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Routing\Controller as BaseController;
+use MuhamedDidovic\Shortener\Traits\Response;
 
+/**
+ * Class LinkController
+ * @package MuhamedDidovic\Shortener\Controllers
+ */
 class LinkController extends BaseController
 {
+    use Response;
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\JsonResponse|\Illuminate\Http\Response
+     */
     public function show(Request $request)
     {
         $code = $request->get('code');
@@ -30,15 +41,23 @@ class LinkController extends BaseController
         return $this->linkResponse($link);
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function store(Request $request)
     {
-        Validator::make($request, [
+
+        $validatedData = $request->validate([
             'url' => 'required|active_url'
         ], [
             'url.required' => 'Please enter a URL to shorten.',
             'url.active_url' => 'Hmm, that doesn\'t look like a valid URL.'
         ]);
-
+       
+//        if ($validator->fails()) {
+//            return $request->withErrors($validator);
+//        }
         $link = Link::firstOrNew([
             'original_url' => $request->get('url')
         ]);
@@ -53,4 +72,6 @@ class LinkController extends BaseController
 
         return $this->linkResponse($link);
     }
+
+
 }

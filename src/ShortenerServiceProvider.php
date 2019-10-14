@@ -2,6 +2,8 @@
 
 namespace MuhamedDidovic\Shortener;
 
+use MuhamedDidovic\Shortener\Link;
+use MuhamedDidovic\Shortener\Observers\LinkObserver;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Contracts\Container\Container;
 use Illuminate\Foundation\Application as LaravelApplication;
@@ -20,6 +22,9 @@ class ShortenerServiceProvider extends ServiceProvider
             return new Cats($app->config->get('cats.names', []));
         });
         $this->app->alias('shortener', Cats::class);
+
+        $this->app['router']->aliasMiddleware('middleware_name' , MyMiddleware::class);
+
     }
 
     /**
@@ -29,6 +34,9 @@ class ShortenerServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        Link::observe(LinkObserver::class);
+//        $this->app['router']->middleware('ModifiesUrlRequestData', ModifiesUrlRequestData::class);
+//        $router->aliasMiddleware('ModifiesUrlRequestData', ModifiesUrlRequestData::class);
         $source = realpath($raw = __DIR__ . '/config/shortener.php') ?: $raw;
         //        if ($this->app instanceof LaravelApplication && $this->app->runningInConsole()) {
 

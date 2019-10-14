@@ -2,8 +2,8 @@
 
 namespace MuhamedDidovic\Shortener;
 
-use App\Exceptions\CodeGenerationException;
-use App\Helpers\Math;
+use MuhamedDidovic\Shortener\Exceptions\CodeGenerationException;
+use MuhamedDidovic\Shortener\Helpers\Math;
 use MuhamedDidovic\Shortener\Traits\Eloquent\TouchesTimestamps;
 use Illuminate\Database\Eloquent\Model;
 
@@ -45,6 +45,6 @@ class Link extends Model
         }
 
         //return env('CLIENT_URL') . '/' . $this->code;
-        return env('APP_URL') . '/' . $this->code;
+        return config('shortener.url') . '/' . $this->code;
     }
 }

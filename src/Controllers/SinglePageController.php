@@ -7,12 +7,20 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Routing\Controller as BaseController;
 use MuhamedDidovic\Shortener\Link;
 
+/**
+ * Class SinglePageController
+ * @package MuhamedDidovic\Shortener\Controllers
+ */
 class SinglePageController extends BaseController
 {
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
+     */
     public function show(Request $request)
     {
         //when we find code in db
-        if ($link = Link::whereCode(request()->segment(1))->first()){
+        if (request()->segment(1) && $link = Link::whereCode(request()->segment(1))->first()){
             //todo: what if original_url is null
             return \Illuminate\Support\Facades\Redirect::to($link->original_url, 301);
         }
