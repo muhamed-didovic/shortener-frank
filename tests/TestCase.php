@@ -1,5 +1,4 @@
 <?php
-declare(strict_types = 1);
 
 namespace MuhamedDidovic\Shortener\Test;
 
@@ -8,15 +7,15 @@ use Orchestra\Testbench\TestCase as Orchestra;
 
 abstract class TestCase extends Orchestra
 {
-    
+
     /**
      * Setup the test environment.
      */
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
     }
-    
+
     /**
      * add the package provider
      *
@@ -27,7 +26,7 @@ abstract class TestCase extends Orchestra
     {
         return [ShortenerServiceProvider::class];
     }
-    
+
     /**
      * Define environment setup.
      *
