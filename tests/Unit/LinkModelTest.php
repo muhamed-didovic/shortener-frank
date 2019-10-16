@@ -2,7 +2,6 @@
 
 namespace MuhamedDidovic\Shortener\Test\Unit;
 
-//use Illuminate\Foundation\Testing\RefreshDatabase;
 use MuhamedDidovic\Shortener\Link;
 use MuhamedDidovic\Shortener\Test\TestCase;
 
