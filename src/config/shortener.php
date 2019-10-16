@@ -1,6 +1,6 @@
 <?php
 return [
 
-    'table_name' => 'links',
+    'table' => 'links',
     'url'        => 'http://frank.test'
 ];
