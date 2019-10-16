@@ -2,9 +2,11 @@
 
 declare(strict_types=1);
 
-namespace MuhamedDidovic\Shortener;
+namespace MuhamedDidovic\Shortener\Test;
 
-class ExampleTest extends \PHPUnit\Framework\TestCase
+use MuhamedDidovic\Shortener\Test\TestCase;
+
+class ExampleTest extends TestCase
 {
     /**
      * Test that true does in fact equal true

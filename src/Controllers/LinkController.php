@@ -54,10 +54,11 @@ class LinkController extends BaseController
             'url.required' => 'Please enter a URL to shorten.',
             'url.active_url' => 'Hmm, that doesn\'t look like a valid URL.'
         ]);
-       
+
 //        if ($validator->fails()) {
 //            return $request->withErrors($validator);
 //        }
+
         $link = Link::firstOrNew([
             'original_url' => $request->get('url')
         ]);
