@@ -7,43 +7,32 @@ use MuhamedDidovic\Shortener\Test\TestCase;
 
 class UrlMiddlewareTest extends TestCase
 {
-    /** @test */
-    public function http_is_prepended_to_url()
+    public function urls()
+    {
+        return [
+            ['google.com', 'http://google.com'],
+            ['ftp://www.google.com', 'ftp://www.google.com'],
+            ['http://www.google.com', 'http://www.google.com'],
+            ['https://www.google.com', 'https://www.google.com']
+        ];
+    }
+
+    /**
+     * @test
+     * @dataProvider urls
+     */
+    public function http_is_prepended_to_url_and_not_prepended_to_url_if_scheme_exist($input, $expected)
     {
         $request = new Request;
 
         $request->replace([
-            'url' => 'google.com'
+            'url' => $input,
         ]);
 
         $middleware = new \MuhamedDidovic\Shortener\Middleware\ModifiesUrlRequestData;
 
-        $middleware->handle($request, function ($req) {
-            $this->assertEquals('http://google.com', $req->url);
+        $middleware->handle($request, function ($req) use ($expected) {
+            $this->assertEquals($expected, $req->url);
         });
-    }
-
-    /** @test */
-    public function http_is_not_prepended_to_url_if_scheme_exists()
-    {
-        $request = new Request;
-
-        $urls = [
-            'ftp://www.google.com',
-            'http://www.google.com',
-            'https://www.google.com',
-        ];
-
-        foreach ($urls as $url) {
-            $request->replace([
-                'url' => $url
-            ]);
-
-            $middleware = new \MuhamedDidovic\Shortener\Middleware\ModifiesUrlRequestData;
-
-            $middleware->handle($request, function ($req) use ($url) {
-                $this->assertEquals($url, $req->url);
-            });
-        }
     }
 }

@@ -17,7 +17,7 @@ use MuhamedDidovic\Shortener\Traits\Response;
 class LinkController extends BaseController
 {
     use Response;
-
+    
     /**
      * @param Request $request
      * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\JsonResponse|\Illuminate\Http\Response
@@ -25,54 +25,48 @@ class LinkController extends BaseController
     public function show(Request $request)
     {
         $code = $request->get('code');
-
+        
         $link = Cache::rememberForever("link.{$code}", function () use ($code) {
             return Link::byCode($code)->first();
         });
-
+        
         if ($link === null) {
             return response(null, 404);
         }
-
+        
         $link->increment('used_count');
-
+        
         $link->touchTimestamp('last_used');
-
+        
         return $this->linkResponse($link);
     }
-
+    
     /**
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
     public function store(Request $request)
     {
-
+        
         $validatedData = $request->validate([
-            'url' => 'required|active_url'
+            'url' => 'required|active_url',
         ], [
-            'url.required' => 'Please enter a URL to shorten.',
-            'url.active_url' => 'Hmm, that doesn\'t look like a valid URL.'
+            'url.required'   => 'Please enter a URL to shorten.',
+            'url.active_url' => 'Hmm, that doesn\'t look like a valid URL.',
         ]);
-
-//        if ($validator->fails()) {
-//            return $request->withErrors($validator);
-//        }
-
+        
         $link = Link::firstOrNew([
-            'original_url' => $request->get('url')
+            'original_url' => $request->get('url'),
         ]);
-
+        
         if (!$link->exists) {
             $link->save();
         }
-
+        
         $link->increment('requested_count');
-
+        
         $link->touchTimestamp('last_requested');
-
+        
         return $this->linkResponse($link);
     }
-
-
 }
