@@ -13,7 +13,7 @@ class CreateLinksTable extends Migration
      */
     public function up()
     {
-        Schema::create('links', function (Blueprint $table) {
+        Schema::create(config('shortener.table'), function (Blueprint $table) {
             $table->increments('id');
             $table->string('original_url')->unique();
             $table->string('code')->nullable()->unique();
@@ -32,6 +32,6 @@ class CreateLinksTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('links');
+        Schema::dropIfExists(config('shortener.table'));
     }
 }

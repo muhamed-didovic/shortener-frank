@@ -16,7 +16,7 @@ class LinkCreationTest extends TestCase
             ->assertJsonFragment(['url' => ['Please enter a URL to shorten.']])
             ->assertStatus(422);
 
-        $this->assertDatabaseMissing('links', [
+        $this->assertDatabaseMissing(config('shortener.table'), [
             'code' => '1',
         ]);
     }
@@ -30,7 +30,7 @@ class LinkCreationTest extends TestCase
             ->assertJsonFragment(['url' => ['Hmm, that doesn\'t look like a valid URL.']])
             ->assertStatus(422);
 
-        $this->assertDatabaseMissing('links', [
+        $this->assertDatabaseMissing(config('shortener.table'), [
             'code' => '1',
         ]);
     }
@@ -54,7 +54,6 @@ class LinkCreationTest extends TestCase
                 ],
             ])
             ->assertStatus(200);
-        //                        dd(Link::all());
 
         //        "id" => "1"
         //        "original_url" => "http://www.google.com"
@@ -66,7 +65,7 @@ class LinkCreationTest extends TestCase
         //        "last_requested" => "2019-09-25 18:13:55"
         //        "last_used" => null
         $this
-            ->assertDatabaseHas('links', [
+            ->assertDatabaseHas(config('shortener.table'), [
                 'original_url' => 'http://www.google.com',
                 'code'         => '1',
             ]);
@@ -91,7 +90,7 @@ class LinkCreationTest extends TestCase
             ->assertStatus(200);
 
         $this
-            ->assertDatabaseHas('links', [
+            ->assertDatabaseHas(config('shortener.table'), [
                 'original_url' => 'http://www.google.com',
                 'code'         => '1',
             ]);
@@ -118,7 +117,7 @@ class LinkCreationTest extends TestCase
         $this->json('POST', '/short', ['url' => $url]);
         $this->json('POST', '/short', ['url' => $url]);
 
-        $this->assertDatabaseHas('links', [
+        $this->assertDatabaseHas(config('shortener.table'), [
             'original_url'    => $url,
             'requested_count' => 2,
         ]);
@@ -134,7 +133,7 @@ class LinkCreationTest extends TestCase
         ]);
 
         $this->json('POST', '/short', ['url' => $link->original_url]);
-        $this->assertDatabaseHas('links', [
+        $this->assertDatabaseHas(config('shortener.table'), [
             'original_url'   => $link->original_url,
             'last_requested' => Carbon::now(),
         ]);

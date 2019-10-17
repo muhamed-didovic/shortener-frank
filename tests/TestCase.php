@@ -11,7 +11,7 @@ use Carbon\Carbon;
 abstract class TestCase extends Orchestra
 {
     use RefreshDatabase;
-    
+
     /**
      * Setup the test environment.
      */
@@ -20,9 +20,9 @@ abstract class TestCase extends Orchestra
         parent::setUp();
         $this->withFactories(__DIR__ . '/database/factories');
         $this->artisan('migrate', ['--database' => 'testing']);
-        
+
     }
-    
+
     /**
      * Define environment setup.
      *
@@ -34,7 +34,7 @@ abstract class TestCase extends Orchestra
     //    {
     //        $app['config']->set('database.default', 'testing');
     //    }
-    
+
     /**
      * Get package providers.  At a minimum this is the package being tested, but also
      * would include packages upon which our package depends, e.g. Cartalyst/Sentry
@@ -62,7 +62,7 @@ abstract class TestCase extends Orchestra
     //    {
     //        return [ShortenerServiceProvider::class];
     //    }
-    
+
     /**
      * Define environment setup.
      *
@@ -79,8 +79,8 @@ abstract class TestCase extends Orchestra
             'prefix'   => '',
         ]);
     }
-    
-    
+
+
     /**
      * Get package aliases.  In a normal app environment these would be added to
      * the 'aliases' array in the config/app.php file.  If your package exposes an
@@ -98,18 +98,37 @@ abstract class TestCase extends Orchestra
     //            //'YourPackage' => 'YourProject\YourPackage\Facades\YourPackage',
     //        ];
     //    }
-    
-    
+
     /** @test */
     public function it_runs_the_migrations()
     {
-        //        $link = factory(Link::class)->create([
-        //            'code' => 'abc'
-        //        ]);
         $link = factory(Link::class)->create();
-        
+
         $users = \DB::table(config('shortener.table'))->where('id', '=', 1)->first();
         $this->assertEquals('1', $link->code);
+        $this->assertEquals([
+            'id',
+            'original_url',
+            'code',
+            'requested_count',
+            'used_count',
+            'last_requested',
+            'last_used',
+            'created_at',
+            'updated_at',
+        ], \Schema::getColumnListing(config('shortener.table')));
+    }
+
+    /** @test */
+    public function it_runs_the_migrations_with_flush_event_listeners()
+    {
+        Link::flushEventListeners();
+        $link = factory(Link::class)->create([
+            'code' => 'abc'
+        ]);
+
+        $users = \DB::table(config('shortener.table'))->where('id', '=', 1)->first();
+        $this->assertEquals('abc', $link->code);
         $this->assertEquals([
             'id',
             'original_url',

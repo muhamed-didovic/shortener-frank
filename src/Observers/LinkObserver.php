@@ -22,9 +22,4 @@ class LinkObserver
             'last_requested' => Carbon::now(),
         ]);
     }
-
-//    public function created(Link $link)
-//    {
-//
-//    }
 }

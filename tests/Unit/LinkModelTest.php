@@ -55,8 +55,7 @@ class LinkModelTest extends TestCase
             'code' => 'abc'
         ]);
 
-//        $this->assertEquals($link->shortenedUrl(), env('CLIENT_URL') . '/' . $link->code);
-//        $this->assertEquals($link->shortenedUrl(), env('APP_URL') . '/' . $link->code);
+
         $this->assertEquals($link->shortenedUrl(), config('shortener.url') . '/' . $link->code);
     }
 
@@ -69,4 +68,5 @@ class LinkModelTest extends TestCase
 
         $this->assertNull($link->shortenedUrl());
     }
+    
 }
