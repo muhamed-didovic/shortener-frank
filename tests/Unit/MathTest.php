@@ -6,20 +6,22 @@ use MuhamedDidovic\Shortener\Test\TestCase;
 
 class MathTest extends TestCase
 {
-    protected $mappings = [
-        1 => 1,
-        100 => '1C',
-        1000000 => '4c92',
-        999999999 => '15FTGf',
-    ];
-
-    /** @test */
-    public function correctly_encodes_values()
+    public function mappingsProvider()
     {
-        $math = new \MuhamedDidovic\Shortener\Helpers\Math;
+        return [
+            [1, 1],
+            [100, '1C'],
+            [1000000, '4c92'],
+            [999999999, '15FTGf'],
+        ];
+    }
 
-        foreach ($this->mappings as $value => $encoded) {
-            $this->assertEquals($encoded, $math->toBase($value));
-        }
+    /**
+     * @test
+     * @dataProvider mappingsProvider
+     */
+    public function correctly_encodes_values($input, $expected)
+    {
+        $this->assertEquals($expected, (new \MuhamedDidovic\Shortener\Helpers\Math)->toBase($input));
     }
 }

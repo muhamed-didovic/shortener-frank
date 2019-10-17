@@ -7,7 +7,7 @@ use MuhamedDidovic\Shortener\Test\TestCase;
 
 class UrlMiddlewareTest extends TestCase
 {
-    public function urls()
+    public function urlsProvider()
     {
         return [
             ['google.com', 'http://google.com'],
@@ -19,7 +19,7 @@ class UrlMiddlewareTest extends TestCase
 
     /**
      * @test
-     * @dataProvider urls
+     * @dataProvider urlsProvider
      */
     public function http_is_prepended_to_url_and_not_prepended_to_url_if_scheme_exist($input, $expected)
     {
