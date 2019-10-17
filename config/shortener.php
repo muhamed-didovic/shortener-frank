@@ -2,5 +2,5 @@
 return [
 
     'table' => 'links',
-    'url'        => 'http://frank.test'
+    'url'        => env('APP_URL', 'http://frank.test')
 ];
