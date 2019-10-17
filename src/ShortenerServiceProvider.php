@@ -18,12 +18,12 @@ class ShortenerServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton('shortener', function (Container $app) {
-            return new Cats($app->config->get('cats.names', []));
-        });
-        $this->app->alias('shortener', Cats::class);
-
-        $this->app['router']->aliasMiddleware('middleware_name' , MyMiddleware::class);
+//        $this->app->singleton('shortener', function (Container $app) {
+//            return new Cats($app->config->get('cats.names', []));
+//        });
+//        $this->app->alias('shortener', Cats::class);
+//
+//        $this->app['router']->aliasMiddleware('middleware_name' , MyMiddleware::class);
 
     }
 
@@ -35,9 +35,8 @@ class ShortenerServiceProvider extends ServiceProvider
     public function boot()
     {
         Link::observe(LinkObserver::class);
-//        $this->app['router']->middleware('ModifiesUrlRequestData', ModifiesUrlRequestData::class);
-//        $router->aliasMiddleware('ModifiesUrlRequestData', ModifiesUrlRequestData::class);
-        $source = realpath($raw = __DIR__ . '/config/shortener.php') ?: $raw;
+
+        $source = realpath($raw = __DIR__ . '/../config/shortener.php') ?: $raw;
         //        if ($this->app instanceof LaravelApplication && $this->app->runningInConsole()) {
 
         $this->loadViewsFrom(__DIR__ . '/views', 'shortener');
