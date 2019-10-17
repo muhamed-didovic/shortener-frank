@@ -3,12 +3,10 @@
 namespace MuhamedDidovic\Shortener\Test\Feature;
 
 use MuhamedDidovic\Shortener\Link;
-//use Illuminate\Foundation\Testing\RefreshDatabase;
 use MuhamedDidovic\Shortener\Test\TestCase;
 
 class LinkStatsTest extends TestCase
 {
-//    use RefreshDatabase;
 
     /** @test */
     public function link_stats_can_be_shown_by_shortened_code()

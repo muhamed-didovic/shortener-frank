@@ -7,7 +7,6 @@ use MuhamedDidovic\Shortener\Test\TestCase;
 
 class LinkModelTest extends TestCase
 {
-//    use RefreshDatabase;
 
     protected $mappings = [
         1 => 1,

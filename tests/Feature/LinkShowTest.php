@@ -4,12 +4,10 @@ namespace MuhamedDidovic\Shortener\Test\Feature;
 
 use MuhamedDidovic\Shortener\Link;
 use Carbon\Carbon;
-//use Illuminate\Foundation\Testing\RefreshDatabase;
 use MuhamedDidovic\Shortener\Test\TestCase;
 
 class LinkShowTest extends TestCase
 {
-//    use RefreshDatabase;
 
     /** @test */
     public function requested_link_details_are_returned()

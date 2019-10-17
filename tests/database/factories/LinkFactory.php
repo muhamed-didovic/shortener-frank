@@ -1,6 +1,5 @@
 <?php
 
-/** @var \Illuminate\Database\Eloquent\Factory $factory */
 use MuhamedDidovic\Shortener\Link;
 use Faker\Generator as Faker;
 use Illuminate\Support\Str;
