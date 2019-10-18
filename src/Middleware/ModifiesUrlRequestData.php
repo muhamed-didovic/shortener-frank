@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace MuhamedDidovic\Shortener\Middleware;
 
@@ -19,17 +20,6 @@ class ModifiesUrlRequestData
         if (!$request->has('url')) {
             return $next($request);
         }
-
-//        $validator = Validator::make($request->all(), [
-//            'title' => 'required|unique:posts|max:255',
-//            'body' => 'required',
-//        ]);
-//
-//        if ($validator->fails()) {
-//            return redirect('post/create')
-//                ->withErrors($validator)
-//                ->withInput();
-//        }
 
         $validator = Validator::make($request->only('url'), [
             'url' => 'active_url'

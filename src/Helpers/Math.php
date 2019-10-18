@@ -1,11 +1,24 @@
 <?php
+declare(strict_types=1);
 
 namespace MuhamedDidovic\Shortener\Helpers;
 
+/**
+ * Class Math
+ * @package MuhamedDidovic\Shortener\Helpers
+ */
 class Math
 {
+    /**
+     * @var string
+     */
     private $base = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-
+    
+    /**
+     * @param     $value
+     * @param int $base
+     * @return mixed|string
+     */
     public function toBase($value, $base = 62)
     {
         $r = $value % $base;
