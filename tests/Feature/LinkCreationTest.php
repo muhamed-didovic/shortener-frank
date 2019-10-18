@@ -38,32 +38,27 @@ class LinkCreationTest extends TestCase
     /** @test */
     public function link_without_scheme_can_be_shortened()
     {
-        //                dd($this->json('POST', '/', [
-        //                    'url' => 'www.google.com'
-        //                ])->getContent());
         $this->json('POST', '/short', [
             'url' => 'www.google.com',
         ])
             ->assertJsonFragment([
                 'data' => [
                     'original_url'  => 'http://www.google.com',
-//                    'shortened_url' => env('CLIENT_URL') . '/1',
-//                    'shortened_url' => env('APP_URL') . '/1',
                     'shortened_url' => config('shortener.url') . '/1',
                     'code'          => '1',
                 ],
             ])
             ->assertStatus(200);
 
-        //        "id" => "1"
-        //        "original_url" => "http://www.google.com"
-        //        "code" => null
-        //        "requested_count" => "1"
-        //        "used_count" => "0"
-        //        "created_at" => "2019-09-25 18:13:55"
-        //        "updated_at" => "2019-09-25 18:13:55"
-        //        "last_requested" => "2019-09-25 18:13:55"
-        //        "last_used" => null
+        //"id" => "1"
+        //"original_url" => "http://www.google.com"
+        //"code" => null
+        //"requested_count" => "1"
+        //"used_count" => "0"
+        //"created_at" => "2019-09-25 18:13:55"
+        //"updated_at" => "2019-09-25 18:13:55"
+        //"last_requested" => "2019-09-25 18:13:55"
+        //"last_used" => null
         $this
             ->assertDatabaseHas(config('shortener.table'), [
                 'original_url' => 'http://www.google.com',
@@ -81,8 +76,6 @@ class LinkCreationTest extends TestCase
             ->assertJsonFragment([
                 'data' => [
                     'original_url'  => 'http://www.google.com',
-//                    'shortened_url' => env('CLIENT_URL') . '/1',
-//                    'shortened_url' => env('APP_URL') . '/1',
                     'shortened_url' => config('shortener.url') . '/1',
                     'code'          => '1',
                 ],
