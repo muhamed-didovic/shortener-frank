@@ -12,22 +12,6 @@ use Laravel\Lumen\Application as LumenApplication;
 class ShortenerServiceProvider extends ServiceProvider
 {
     /**
-     * Register services.
-     *
-     * @return void
-     */
-    public function register()
-    {
-//        $this->app->singleton('shortener', function (Container $app) {
-//            return new Cats($app->config->get('cats.names', []));
-//        });
-//        $this->app->alias('shortener', Cats::class);
-//
-//        $this->app['router']->aliasMiddleware('middleware_name' , MyMiddleware::class);
-
-    }
-
-    /**
      * Bootstrap services.
      *
      * @return void
@@ -44,11 +28,11 @@ class ShortenerServiceProvider extends ServiceProvider
         $this->loadMigrationsFrom(__DIR__ . '/migrations');
 
         $this->publishes([
-            $source                               => config_path('shortener.php'),
-            __DIR__ . '/resources/views'          => resource_path('views/vendor/shortener'),
-            __DIR__ . '/migrations'               => database_path('migrations'),
-            __DIR__ . '/public/css' => public_path('css/'),
-            __DIR__ . '/public/js'  => public_path('js/'),
+            $source                      => config_path('shortener.php'),
+            __DIR__ . '/resources/views' => resource_path('views/vendor/shortener'),
+            __DIR__ . '/migrations'      => database_path('migrations'),
+            __DIR__ . '/public/css'      => public_path('css/'),
+            __DIR__ . '/public/js'       => public_path('js/'),
         ], 'shortener');
 
         //        $this->publishes([
@@ -61,6 +45,16 @@ class ShortenerServiceProvider extends ServiceProvider
         //        elseif ($this->app instanceof LumenApplication) {
         //            $this->app->configure('shortener');
         //        }
+    }
+
+    /**
+     * Register services.
+     *
+     * @return void
+     */
+    public function register()
+    {
+        $source = realpath($raw = __DIR__ . '/../config/shortener.php') ?: $raw;
         $this->mergeConfigFrom($source, 'shortener');
     }
 
