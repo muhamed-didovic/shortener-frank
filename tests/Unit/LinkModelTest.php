@@ -41,7 +41,7 @@ class LinkModelTest extends TestCase
         $link = factory(Link::class)->create([
             'code' => 'abc'
         ]);
-
+        
         $model = $link->byCode($link->code)->first();
 
         $this->assertInstanceOf(Link::class, $model);
@@ -68,5 +68,5 @@ class LinkModelTest extends TestCase
 
         $this->assertNull($link->shortenedUrl());
     }
-    
+
 }

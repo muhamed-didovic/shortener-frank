@@ -22,19 +22,6 @@ abstract class TestCase extends Orchestra
         $this->artisan('migrate', ['--database' => 'testing']);
 
     }
-
-    /**
-     * Define environment setup.
-     *
-     * @param \Illuminate\Foundation\Application $app
-     *
-     * @return void
-     */
-    //    protected function getEnvironmentSetUp($app)
-    //    {
-    //        $app['config']->set('database.default', 'testing');
-    //    }
-
     /**
      * Get package providers.  At a minimum this is the package being tested, but also
      * would include packages upon which our package depends, e.g. Cartalyst/Sentry
@@ -48,20 +35,9 @@ abstract class TestCase extends Orchestra
     protected function getPackageProviders($app)
     {
         return [
-            //            \Orchestra\Testbench\Tests\Stubs\Providers\ServiceProvider::class,
             ShortenerServiceProvider::class,
         ];
     }
-    /**
-     * add the package provider
-     *
-     * @param $app
-     * @return array
-     */
-    //    protected function getPackageProviders($app)
-    //    {
-    //        return [ShortenerServiceProvider::class];
-    //    }
 
     /**
      * Define environment setup.
@@ -79,8 +55,7 @@ abstract class TestCase extends Orchestra
             'prefix'   => '',
         ]);
     }
-
-
+    
     /**
      * Get package aliases.  In a normal app environment these would be added to
      * the 'aliases' array in the config/app.php file.  If your package exposes an
@@ -94,7 +69,6 @@ abstract class TestCase extends Orchestra
     //    protected function getPackageAliases($app)
     //    {
     //        return [
-    //            //'Sentry' => 'Cartalyst\Sentry\Facades\Laravel\Sentry',
     //            //'YourPackage' => 'YourProject\YourPackage\Facades\YourPackage',
     //        ];
     //    }
