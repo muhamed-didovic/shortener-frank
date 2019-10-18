@@ -2,10 +2,10 @@ dist: trusty
 language: php
 
 php:
-  - 7.1
+#  - 7.1
   - 7.2
   - 7.3
-  - hhvm
+#  - hhvm
 
 # This triggers builds to run on the new TravisCI infrastructure.
 # See: http://docs.travis-ci.com/user/workers/container-based-infrastructure/
@@ -16,30 +16,30 @@ cache:
   directories:
     - $HOME/.composer/cache
 
-matrix:
-  include:
-    - php: 7.1
-      env: 'COMPOSER_FLAGS="--prefer-stable --prefer-lowest"'
-
 #matrix:
-#    fast_finish: true
-#    include:
-#        - php: 7.2
-#          env: LARAVEL='5.8.*' TESTBENCH='3.8.*' COMPOSER_FLAGS='--prefer-lowest'
-#        - php: 7.2
-#          env: LARAVEL='5.8.*' TESTBENCH='3.8.*' COMPOSER_FLAGS='--prefer-stable'
-#        - php: 7.3
-#          env: LARAVEL='5.8.*' TESTBENCH='3.8.*' COMPOSER_FLAGS='--prefer-lowest'
-#        - php: 7.3
-#          env: LARAVEL='5.8.*' TESTBENCH='3.8.*' COMPOSER_FLAGS='--prefer-stable'
-#        - php: 7.2
-#          env: LARAVEL='6.*' TESTBENCH='4.*' COMPOSER_FLAGS='--prefer-lowest'
-#        - php: 7.2
-#          env: LARAVEL='6.*' TESTBENCH='4.*' COMPOSER_FLAGS='--prefer-stable'
-#        - php: 7.3
-#          env: LARAVEL='6.*' TESTBENCH='4.*' COMPOSER_FLAGS='--prefer-lowest'
-#        - php: 7.3
-#          env: LARAVEL='6.*' TESTBENCH='4.*' COMPOSER_FLAGS='--prefer-stable'
+#  include:
+#    - php: 7.1
+#      env: 'COMPOSER_FLAGS="--prefer-stable --prefer-lowest"'
+
+matrix:
+    fast_finish: true
+    include:
+        - php: 7.2
+          env: LARAVEL='5.8.*' TESTBENCH='3.8.*' COMPOSER_FLAGS='--prefer-lowest'
+        - php: 7.2
+          env: LARAVEL='5.8.*' TESTBENCH='3.8.*' COMPOSER_FLAGS='--prefer-stable'
+        - php: 7.3
+          env: LARAVEL='5.8.*' TESTBENCH='3.8.*' COMPOSER_FLAGS='--prefer-lowest'
+        - php: 7.3
+          env: LARAVEL='5.8.*' TESTBENCH='3.8.*' COMPOSER_FLAGS='--prefer-stable'
+        - php: 7.2
+          env: LARAVEL='6.*' TESTBENCH='4.*' COMPOSER_FLAGS='--prefer-lowest'
+        - php: 7.2
+          env: LARAVEL='6.*' TESTBENCH='4.*' COMPOSER_FLAGS='--prefer-stable'
+        - php: 7.3
+          env: LARAVEL='6.*' TESTBENCH='4.*' COMPOSER_FLAGS='--prefer-lowest'
+        - php: 7.3
+          env: LARAVEL='6.*' TESTBENCH='4.*' COMPOSER_FLAGS='--prefer-stable'
 
 before_script:
   - travis_retry composer update ${COMPOSER_FLAGS} --no-interaction --prefer-dist
