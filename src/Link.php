@@ -1,5 +1,5 @@
 <?php
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace MuhamedDidovic\Shortener;
 
@@ -16,7 +16,7 @@ use Illuminate\Database\Eloquent\Model;
 class Link extends Model
 {
     use TouchesTimestamps;
-
+    
     /**
      * @var array
      */
@@ -26,16 +26,17 @@ class Link extends Model
         'requested_count',
         'used_count',
         'last_requested',
-        'last_used'
+        'last_used',
     ];
-
+    
     /**
      * @var array
      */
     protected $dates = [
-        'last_requested', 'last_used'
+        'last_requested',
+        'last_used',
     ];
-
+    
     /**
      * @return \Illuminate\Config\Repository|mixed|string
      */
@@ -43,7 +44,7 @@ class Link extends Model
     {
         return config('shortener.table');
     }
-
+    
     /**
      * @return mixed|string
      * @throws CodeGenerationException
@@ -53,10 +54,10 @@ class Link extends Model
         if ($this->id === null) {
             throw new CodeGenerationException;
         }
-
+        
         return (new Math)->toBase($this->id);
     }
-
+    
     /**
      * @param $code
      * @return mixed
@@ -65,7 +66,7 @@ class Link extends Model
     {
         return static::where('code', $code);
     }
-
+    
     /**
      * @return string|null
      */
@@ -74,7 +75,7 @@ class Link extends Model
         if ($this->code === null) {
             return null;
         }
-
+        
         //return env('CLIENT_URL') . '/' . $this->code;
         return config('shortener.url') . '/' . $this->code;
     }

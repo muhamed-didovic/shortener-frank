@@ -55,15 +55,19 @@ class LinkShowTest extends TestCase
     {
         Link::flushEventListeners();
 
-        $today = Carbon::now();
         $link = factory(Link::class)->create([
-            'last_used' => $today->subDays(2)->toDateTimeString(),
+            'last_used' => Carbon::now()->subDays(2)->toDateTimeString(),
         ]);
-        Carbon::setTestNow($today->addDays(2));
-        $this->json('GET', config('shortener.routes.get_short_route'), ['code' => $link->code]);
+
+        $reponse = $this->json('GET', config('shortener.routes.get_short_route'), ['code' => $link->code]);
+        $json = json_decode($reponse->getContent());
+
         $this->assertDatabaseHas(config('shortener.table'), [
             'original_url' => $link->original_url,
-            'last_used'    => $today->toDateTimeString(),
+            'last_used'    => Carbon::parse($json->data->last_used)->toDateTimeString(),
         ]);
+
+        $this->assertNotEquals(Carbon::parse($json->data->last_used)->toDateTimeString(), $link->last_used);
+        $this->assertTrue(Carbon::parse($json->data->last_used)->notEqualTo($link->last_used));
     }
 }

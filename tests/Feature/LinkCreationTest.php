@@ -38,15 +38,14 @@ class LinkCreationTest extends TestCase
     /** @test */
     public function link_without_scheme_can_be_shortened()
     {
-        $this->json('POST', config('shortener.routes.post_short_route'), [
-            'url' => 'www.google.com',
-        ])
+        $this->json('POST', config('shortener.routes.post_short_route'),
+            [
+                'url' => 'www.google.com',
+            ])
             ->assertJsonFragment([
-                'data' => [
-                    'original_url'  => 'http://www.google.com',
-                    'shortened_url' => config('shortener.url') . '/1',
-                    'code'          => '1',
-                ],
+                'original_url'  => 'http://www.google.com',
+                'shortened_url' => config('shortener.url') . '/1',
+                'code'          => '1',
             ])
             ->assertStatus(200);
 
@@ -75,11 +74,9 @@ class LinkCreationTest extends TestCase
                 'url' => 'http://www.google.com',
             ])
             ->assertJsonFragment([
-                'data' => [
-                    'original_url'  => 'http://www.google.com',
-                    'shortened_url' => config('shortener.url') . '/1',
-                    'code'          => '1',
-                ],
+                'original_url'  => 'http://www.google.com',
+                'shortened_url' => config('shortener.url') . '/1',
+                'code'          => '1',
             ])
             ->assertStatus(200);
 
@@ -122,21 +119,19 @@ class LinkCreationTest extends TestCase
     {
         Link::flushEventListeners();
 
-        $today = Carbon::now();
-
-        $link  = factory(Link::class)->create([
-            'last_requested' => $today->subDays(2)->toDateTimeString(),
+        $link = factory(Link::class)->create([
+            'last_requested' => Carbon::now()->subDays(2)->toDateTimeString(),
         ]);
 
-        Carbon::setTestNow($today->addDays(2));
+        $reponse = $this->json('POST', config('shortener.routes.post_short_route'), ['url' => $link->original_url]);
+        $json    = json_decode($reponse->getContent());
 
-        $this->json('POST', config('shortener.routes.post_short_route'), ['url' => $link->original_url]);
         $this->assertDatabaseHas(config('shortener.table'), [
             'original_url'   => $link->original_url,
-            'last_requested' => $today->toDateTimeString(),
+            'last_requested' => Carbon::parse($json->data->last_requested)->toDateTimeString(),
         ]);
+        $this->assertNotEquals(Carbon::parse($json->data->last_requested)->toDateTimeString(), $link->last_requested);
+        $this->assertTrue(Carbon::parse($json->data->last_requested)->notEqualTo($link->last_requested));
 
-        // IMPORTANT: Reset the date to not affect the next test!
-        Carbon::setTestNow();
     }
 }
