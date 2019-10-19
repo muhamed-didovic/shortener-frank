@@ -4,7 +4,6 @@ language: php
 php:
   - 7.2
   - 7.3
-  - 7.4snapshot
   - hhvm
 
 # This triggers builds to run on the new TravisCI infrastructure.
@@ -22,8 +21,6 @@ cache:
 #      env: 'COMPOSER_FLAGS="--prefer-stable --prefer-lowest"'
 
 matrix:
-    allow_failures:
-        -   php: 7.4snapshot
     fast_finish: true
     include:
         - php: 7.2
