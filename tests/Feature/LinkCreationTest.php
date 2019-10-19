@@ -68,7 +68,6 @@ class LinkCreationTest extends TestCase
     /** @test */
     public function link_with_scheme_can_be_shortened()
     {
-
         $this->json('POST', config('shortener.routes.post_short_route'),
             [
                 'url' => 'http://www.google.com',
@@ -123,8 +122,16 @@ class LinkCreationTest extends TestCase
             'last_requested' => Carbon::now()->subDays(2)->toDateTimeString(),
         ]);
 
-        $reponse = $this->json('POST', config('shortener.routes.post_short_route'), ['url' => $link->original_url]);
-        $json    = json_decode($reponse->getContent());
+        $reponse = $this
+            ->json('POST', config('shortener.routes.post_short_route'), ['url' => $link->original_url]);
+
+        $reponse->assertJsonFragment(
+            [
+                'original_url'  => $link->original_url,
+            ])
+            ->assertStatus(200);
+
+        $json = json_decode($reponse->getContent());
 
         $this->assertDatabaseHas(config('shortener.table'), [
             'original_url'   => $link->original_url,
