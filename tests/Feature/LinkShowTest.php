@@ -59,11 +59,11 @@ class LinkShowTest extends TestCase
         $link = factory(Link::class)->create([
             'last_used' => $today->subDays(2)->toDateTimeString(),
         ]);
-
+        Carbon::setTestNow($today->addDays(2));
         $this->json('GET', config('shortener.routes.get_short_route'), ['code' => $link->code]);
         $this->assertDatabaseHas(config('shortener.table'), [
             'original_url' => $link->original_url,
-            'last_used'    => $today->addDays(2)->toDateTimeString(),
+            'last_used'    => $today->toDateTimeString(),
         ]);
     }
 }
