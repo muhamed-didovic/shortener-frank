@@ -120,7 +120,7 @@ class LinkCreationTest extends TestCase
     public function last_requested_date_is_updated_for_existing_link()
     {
         Link::flushEventListeners();
-        
+
         $today = Carbon::now();
         $link = factory(Link::class)->create([
             'last_requested' => $today->subDays(2),
@@ -129,7 +129,7 @@ class LinkCreationTest extends TestCase
         $this->json('POST', '/short', ['url' => $link->original_url]);
         $this->assertDatabaseHas(config('shortener.table'), [
             'original_url'   => $link->original_url,
-            'last_requested' => $today->toDateTimeString(),
+            'last_requested' => $today->addDays(2)->toDateTimeString(),
         ]);
     }
 }
