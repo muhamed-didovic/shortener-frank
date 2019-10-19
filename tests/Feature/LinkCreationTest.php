@@ -120,7 +120,7 @@ class LinkCreationTest extends TestCase
     public function last_requested_date_is_updated_for_existing_link()
     {
         Link::flushEventListeners();
-//dd(Carbon::now()->toDateTimeString());
+
         $link = factory(Link::class)->create([
             'last_requested' => Carbon::now()->subDays(2),
         ]);
