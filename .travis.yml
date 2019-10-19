@@ -2,10 +2,10 @@ dist: trusty
 language: php
 
 php:
-#  - 7.1
   - 7.2
   - 7.3
-#  - hhvm
+  - 7.4snapshot
+  - hhvm
 
 # This triggers builds to run on the new TravisCI infrastructure.
 # See: http://docs.travis-ci.com/user/workers/container-based-infrastructure/
@@ -22,6 +22,8 @@ cache:
 #      env: 'COMPOSER_FLAGS="--prefer-stable --prefer-lowest"'
 
 matrix:
+    allow_failures:
+        -   php: 7.4snapshot
     fast_finish: true
     include:
         - php: 7.2
@@ -42,6 +44,7 @@ matrix:
           env: LARAVEL='6.*' TESTBENCH='4.*' COMPOSER_FLAGS='--prefer-stable'
 
 before_script:
+  - travis_retry composer self-update
   - travis_retry composer update ${COMPOSER_FLAGS} --no-interaction --prefer-dist
 
 script:
@@ -64,29 +67,3 @@ after_script:
 #
 #script:
 #    - vendor/bin/phpunit
-
-#---------------
-#language: php
-#
-#cache:
-#    directories:
-#        - $HOME/.composer/cache/files
-#
-#php:
-#    - 7.2
-#    - 7.3
-#    - 7.4snapshot
-#
-#matrix:
-#    include:
-#        - php: 7.2
-#          env: COMPOSER_FLAGS="--prefer-lowest"
-#    allow_failures:
-#        - php: 7.4snapshot
-#
-#before_script:
-#    - travis_retry composer self-update
-#    - travis_retry composer update ${COMPOSER_FLAGS} --no-interaction
-#
-#script:
-#    - vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover
