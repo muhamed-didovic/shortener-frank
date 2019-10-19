@@ -127,7 +127,7 @@ class LinkCreationTest extends TestCase
         $link  = factory(Link::class)->create([
             'last_requested' => $today->subDays(2)->toDateTimeString(),
         ]);
-       
+
         Carbon::setTestNow($today->addDays(2));
 
         $this->json('POST', config('shortener.routes.post_short_route'), ['url' => $link->original_url]);
