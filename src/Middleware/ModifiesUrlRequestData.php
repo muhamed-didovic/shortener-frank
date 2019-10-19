@@ -22,7 +22,7 @@ class ModifiesUrlRequestData
         }
 
         $validator = Validator::make($request->only('url'), [
-            'url' => 'active_url'
+            'url' => 'url'
         ]);
 
         if ($validator->fails()) {
