@@ -14,7 +14,7 @@ class LinkShowTest extends TestCase
     {
         $link = factory(Link::class)->create();
 
-        $response = $this->json('GET', '/short',
+        $response = $this->json('GET', config('shortener.routes.post_short_route'),
             [
                 'code' => $link->code,
             ])
@@ -29,7 +29,7 @@ class LinkShowTest extends TestCase
     /** @test */
     public function throws_404_if_no_link_found()
     {
-        $response = $this->json('GET', '/short', ['code' => 'abc']);
+        $response = $this->json('GET', config('shortener.routes.post_short_route'), ['code' => 'abc']);
 
         $response->assertStatus(404);
         $this->assertEmpty($response->getContent());
@@ -40,9 +40,9 @@ class LinkShowTest extends TestCase
     {
         $link = factory(Link::class)->create();
 
-        $this->json('GET', '/short', ['code' => $link->code]);
-        $this->json('GET', '/short', ['code' => $link->code]);
-        $this->json('GET', '/short', ['code' => $link->code]);
+        $this->json('GET', config('shortener.routes.post_short_route'), ['code' => $link->code]);
+        $this->json('GET', config('shortener.routes.post_short_route'), ['code' => $link->code]);
+        $this->json('GET', config('shortener.routes.post_short_route'), ['code' => $link->code]);
 
         $this->assertDatabaseHas(config('shortener.table'), [
             'original_url' => $link->original_url,
@@ -57,13 +57,13 @@ class LinkShowTest extends TestCase
 
         $today = Carbon::now();
         $link = factory(Link::class)->create([
-            'last_used' => Carbon::now()->subDays(2),
+            'last_used' => $today->subDays(2)->toDateTimeString(),
         ]);
 
-        $this->json('GET', '/short', ['code' => $link->code]);
+        $this->json('GET', config('shortener.routes.get_short_route'), ['code' => $link->code]);
         $this->assertDatabaseHas(config('shortener.table'), [
             'original_url' => $link->original_url,
-            'last_used'    => $today->toDateTimeString(),
+            'last_used'    => $today->addDays(2)->toDateTimeString(),
         ]);
     }
 }

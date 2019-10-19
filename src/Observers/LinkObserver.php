@@ -1,5 +1,5 @@
 <?php
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace MuhamedDidovic\Shortener\Observers;
 
@@ -19,7 +19,7 @@ class LinkObserver
     public function created(Link $link)
     {
         $link->update([
-            'code' => $link->getCode(),
+            'code'           => $link->getCode(),
             'last_requested' => Carbon::now(),
         ]);
     }

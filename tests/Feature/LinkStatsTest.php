@@ -7,7 +7,7 @@ use MuhamedDidovic\Shortener\Test\TestCase;
 
 class LinkStatsTest extends TestCase
 {
-    
+
     /** @test */
     public function link_stats_can_be_shown_by_shortened_code()
     {
@@ -15,22 +15,22 @@ class LinkStatsTest extends TestCase
             'requested_count' => 5,
             'used_count'      => 234,
         ]);
-        
+
         $this
-            ->json('GET', '/stats', [
+            ->json('GET', config('shortener.routes.get_stats_route'), [
                 'code' => $link->code,
             ])
             ->assertJsonFragment($this->expectedJson($link));
     }
-    
+
     /** @test */
     public function link_stats_fails_if_not_found()
     {
         $this
-            ->json('GET', '/stats', ['code' => 'abc'])
+            ->json('GET', config('shortener.routes.get_stats_route'), ['code' => 'abc'])
             ->assertStatus(404);
     }
-    
+
     protected function expectedJson(Link $link)
     {
         return [
