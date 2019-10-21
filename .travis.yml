@@ -10,10 +10,14 @@ php:
 sudo: false
 
 ## Cache composer
+#cache:
+#    directories:
+#        - $HOME/.composer/cache
 cache:
     directories:
+        - node_modules
+        - vendor
         - $HOME/.composer/cache
-
 matrix:
     fast_finish: true
     include:
