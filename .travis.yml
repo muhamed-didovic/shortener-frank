@@ -46,13 +46,13 @@ matrix:
         - php: 7.3
           env: LARAVEL='5.8.*' TESTBENCH='3.8.*' PHPUNIT='8.*' PRETTY='0.26' COMPOSER_FLAGS='--prefer-stable'
         - php: 7.2
-          env: LARAVEL='6.*' TESTBENCH='4.*' PHPUNIT='8.*' COMPOSER_FLAGS='--prefer-lowest'
+          env: LARAVEL='6.*' TESTBENCH='4.*' PHPUNIT='8.*' PRETTY='0.26' COMPOSER_FLAGS='--prefer-lowest'
         - php: 7.2
-          env: LARAVEL='6.*' TESTBENCH='4.*' PHPUNIT='8.*' COMPOSER_FLAGS='--prefer-stable'
+          env: LARAVEL='6.*' TESTBENCH='4.*' PHPUNIT='8.*' PRETTY='0.26' COMPOSER_FLAGS='--prefer-stable'
         - php: 7.3
-          env: LARAVEL='6.*' TESTBENCH='4.*' PHPUNIT='8.*' COMPOSER_FLAGS='--prefer-lowest'
+          env: LARAVEL='6.*' TESTBENCH='4.*' PHPUNIT='8.*' PRETTY='0.26' COMPOSER_FLAGS='--prefer-lowest'
         - php: 7.3
-          env: LARAVEL='6.*' TESTBENCH='4.*' PHPUNIT='8.*' COMPOSER_FLAGS='--prefer-stable'
+          env: LARAVEL='6.*' TESTBENCH='4.*' PHPUNIT='8.*' PRETTY='0.26' COMPOSER_FLAGS='--prefer-stable'
 
 before_install:
     - travis_retry composer self-update
