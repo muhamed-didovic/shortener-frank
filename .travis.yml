@@ -1,52 +1,58 @@
-dist: trusty
 language: php
 
-php:
-    - 7.2
-    - 7.3
-
-# This triggers builds to run on the new TravisCI infrastructure.
-# See: http://docs.travis-ci.com/user/workers/container-based-infrastructure/
-sudo: false
-
-## Cache composer
-#cache:
-#    directories:
-#        - $HOME/.composer/cache
 cache:
     directories:
-        - node_modules
-        - vendor
         - $HOME/.composer/cache
 
 matrix:
     fast_finish: true
     include:
-        -   php: 7.2
-            env: LARAVEL='5.8.*' TESTBENCH='3.8.*' COMPOSER_FLAGS='--prefer-lowest'
-        -   php: 7.2
-            env: LARAVEL='5.8.*' TESTBENCH='3.8.*' COMPOSER_FLAGS='--prefer-stable'
-        -   php: 7.3
-            env: LARAVEL='5.8.*' TESTBENCH='3.8.*' COMPOSER_FLAGS='--prefer-lowest'
-        -   php: 7.3
-            env: LARAVEL='5.8.*' TESTBENCH='3.8.*' COMPOSER_FLAGS='--prefer-stable'
-        -   php: 7.2
-            env: LARAVEL='6.*' TESTBENCH='4.*' COMPOSER_FLAGS='--prefer-lowest'
-        -   php: 7.2
-            env: LARAVEL='6.*' TESTBENCH='4.*' COMPOSER_FLAGS='--prefer-stable'
-        -   php: 7.3
-            env: LARAVEL='6.*' TESTBENCH='4.*' COMPOSER_FLAGS='--prefer-lowest'
-        -   php: 7.3
-            env: LARAVEL='6.*' TESTBENCH='4.*' COMPOSER_FLAGS='--prefer-stable'
-
-#before_script:
-##    - travis_retry composer update ${COMPOSER_FLAGS} --no-interaction --prefer-dist
-#    - travis_retry composer require "laravel/framework:${LARAVEL}" "orchestra/testbench:${TESTBENCH}" --no-interaction --no-update
-
-
-#script:
-#    #  - vendor/bin/phpcs --standard=psr2 src/
-#    - vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover
+#        - php: 7.3
+#          env: LARAVEL='5.5.*' TESTBENCH='3.5.*' COMPOSER_FLAGS='--prefer-stable'
+#        - php: 7.1
+#          env: LARAVEL='5.6.*' TESTBENCH='3.6.*' COMPOSER_FLAGS='--prefer-lowest'
+#        - php: 7.1
+#          env: LARAVEL='5.6.*' TESTBENCH='3.6.*' COMPOSER_FLAGS='--prefer-stable'
+#        - php: 7.2
+#          env: LARAVEL='5.6.*' TESTBENCH='3.6.*' COMPOSER_FLAGS='--prefer-lowest'
+#        - php: 7.2
+#          env: LARAVEL='5.6.*' TESTBENCH='3.6.*' COMPOSER_FLAGS='--prefer-stable'
+#        - php: 7.3
+#          env: LARAVEL='5.6.*' TESTBENCH='3.6.*' COMPOSER_FLAGS='--prefer-lowest'
+#        - php: 7.3
+#          env: LARAVEL='5.6.*' TESTBENCH='3.6.*' COMPOSER_FLAGS='--prefer-stable'
+#        - php: 7.1
+#          env: LARAVEL='5.7.*' TESTBENCH='3.7.*' COMPOSER_FLAGS='--prefer-lowest'
+#        - php: 7.1
+#          env: LARAVEL='5.7.*' TESTBENCH='3.7.*' COMPOSER_FLAGS='--prefer-stable'
+#        - php: 7.2
+#          env: LARAVEL='5.7.*' TESTBENCH='3.7.*' COMPOSER_FLAGS='--prefer-lowest'
+#        - php: 7.2
+#          env: LARAVEL='5.7.*' TESTBENCH='3.7.*' COMPOSER_FLAGS='--prefer-stable'
+#        - php: 7.3
+#          env: LARAVEL='5.7.*' TESTBENCH='3.7.*' COMPOSER_FLAGS='--prefer-lowest'
+#        - php: 7.3
+#          env: LARAVEL='5.7.*' TESTBENCH='3.7.*' COMPOSER_FLAGS='--prefer-stable'
+        - php: 7.1
+          env: LARAVEL='5.8.*' TESTBENCH='3.8.*' COMPOSER_FLAGS='--prefer-lowest'
+        - php: 7.1
+          env: LARAVEL='5.8.*' TESTBENCH='3.8.*' COMPOSER_FLAGS='--prefer-stable'
+        - php: 7.2
+          env: LARAVEL='5.8.*' TESTBENCH='3.8.*' COMPOSER_FLAGS='--prefer-lowest'
+        - php: 7.2
+          env: LARAVEL='5.8.*' TESTBENCH='3.8.*' COMPOSER_FLAGS='--prefer-stable'
+        - php: 7.3
+          env: LARAVEL='5.8.*' TESTBENCH='3.8.*' COMPOSER_FLAGS='--prefer-lowest'
+        - php: 7.3
+          env: LARAVEL='5.8.*' TESTBENCH='3.8.*' COMPOSER_FLAGS='--prefer-stable'
+        - php: 7.2
+          env: LARAVEL='6.*' TESTBENCH='4.*' COMPOSER_FLAGS='--prefer-lowest'
+        - php: 7.2
+          env: LARAVEL='6.*' TESTBENCH='4.*' COMPOSER_FLAGS='--prefer-stable'
+        - php: 7.3
+          env: LARAVEL='6.*' TESTBENCH='4.*' COMPOSER_FLAGS='--prefer-lowest'
+        - php: 7.3
+          env: LARAVEL='6.*' TESTBENCH='4.*' COMPOSER_FLAGS='--prefer-stable'
 
 before_install:
     - travis_retry composer self-update
@@ -56,11 +62,4 @@ install:
     - travis_retry composer update ${COMPOSER_FLAGS} --prefer-dist --no-interaction --no-suggest
 
 script:
-    - vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover
-
-after_script:
-    - |
-        if [[ "$TRAVIS_PHP_VERSION" != 'hhvm' ]]; then
-          wget https://scrutinizer-ci.com/ocular.phar
-          php ocular.phar code-coverage:upload --format=php-clover coverage.clover
-        fi
+    - vendor/bin/phpunit
