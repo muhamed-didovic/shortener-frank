@@ -133,12 +133,13 @@ class LinkCreationTest extends TestCase
 
         $json = json_decode($reponse->getContent());
 
+        $lastRequested = is_object($json->data->last_requested) ? $json->data->last_requested->toDateTimeString() : $json->data->last_requested;
         $this->assertDatabaseHas(config('shortener.table'), [
             'original_url'   => $link->original_url,
-            'last_requested' => Carbon::parse($json->data->last_requested)->toDateTimeString(),
+            'last_requested' => Carbon::parse($lastRequested)->toDateTimeString(),
         ]);
-        $this->assertNotEquals(Carbon::parse($json->data->last_requested)->toDateTimeString(), $link->last_requested);
-        $this->assertTrue(Carbon::parse($json->data->last_requested)->notEqualTo($link->last_requested));
+        $this->assertNotEquals(Carbon::parse($lastRequested)->toDateTimeString(), $link->last_requested);
+        $this->assertTrue(Carbon::parse($lastRequested)->notEqualTo($link->last_requested));
 
     }
 }

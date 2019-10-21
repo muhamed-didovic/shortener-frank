@@ -62,12 +62,13 @@ class LinkShowTest extends TestCase
         $reponse = $this->json('GET', config('shortener.routes.get_short_route'), ['code' => $link->code]);
         $json = json_decode($reponse->getContent());
 
+        $lastUsed = is_object($json->data->last_used) ? $json->data->last_used->toDateTimeString() : $json->data->last_used;
         $this->assertDatabaseHas(config('shortener.table'), [
             'original_url' => $link->original_url,
-            'last_used'    => Carbon::parse($json->data->last_used)->toDateTimeString(),
+            'last_used'    => Carbon::parse($lastUsed)->toDateTimeString(),
         ]);
 
-        $this->assertNotEquals(Carbon::parse($json->data->last_used)->toDateTimeString(), $link->last_used);
-        $this->assertTrue(Carbon::parse($json->data->last_used)->notEqualTo($link->last_used));
+        $this->assertNotEquals(Carbon::parse($lastUsed)->toDateTimeString(), $link->last_used);
+        $this->assertTrue(Carbon::parse($lastUsed)->notEqualTo($link->last_used));
     }
 }
