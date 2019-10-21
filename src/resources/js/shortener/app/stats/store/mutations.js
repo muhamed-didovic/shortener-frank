@@ -1,3 +1,3 @@
 export const setStats = (state, stats) => {
-  state.stats = stats
+    state.stats = stats
 }

@@ -58,5 +58,4 @@ class ShortenerServiceProvider extends ServiceProvider
         $source = realpath($raw = __DIR__ . '/../config/shortener.php') ?: $raw;
         $this->mergeConfigFrom($source, 'shortener');
     }
-
 }

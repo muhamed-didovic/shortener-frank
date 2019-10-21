@@ -20,7 +20,7 @@ class LinkStatsTest extends TestCase
             ->json('GET', config('shortener.routes.get_stats_route'), [
                 'code' => $link->code,
             ])
-            ->assertJsonFragment($this->expectedJson($link));
+           ->assertJsonFragment($this->expectedJson($link));
     }
 
     /** @test */
@@ -33,13 +33,14 @@ class LinkStatsTest extends TestCase
 
     protected function expectedJson(Link $link)
     {
+
         return [
             'original_url'    => $link->original_url,
             'shortened_url'   => $link->shortenedUrl(),
             'code'            => $link->code,
             'requested_count' => $link->requested_count,
             'used_count'      => $link->used_count,
-            'last_requested'  => $link->last_requested,
+            'last_requested'  => is_object($link->last_requested)  ? $link->last_requested->toDateTimeString() : $link->last_requested->toDateTimeString(),
             'last_used'       => $link->last_used ? $link->last_used : null,
         ];
     }
