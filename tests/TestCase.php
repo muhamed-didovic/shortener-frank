@@ -20,7 +20,6 @@ abstract class TestCase extends Orchestra
         parent::setUp();
         $this->withFactories(__DIR__ . '/database/factories');
         $this->artisan('migrate', ['--database' => 'testing']);
-
     }
     /**
      * Get package providers.  At a minimum this is the package being tested, but also

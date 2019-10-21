@@ -19,15 +19,15 @@
         }
     ],
     "require": {
-        "php": "^7.2",
-        "illuminate/support": "~5.8|~6",
-        "illuminate/validation": "~5.8|~6"
+        "illuminate/support": "^5.5|^5.6|^5.7|^5.8|^6.0",
+        "illuminate/validation": "^5.5|^5.6|^5.7|^5.8|^6.0"
     },
     "require-dev": {
-        "codedungeon/phpunit-result-printer": "^0.26.2",
-        "orchestra/testbench": "^4.0",
-        "phpunit/phpunit": ">=7.0",
-        "squizlabs/php_codesniffer": "^3.0"
+        "codedungeon/phpunit-result-printer": "*",
+        "orchestra/testbench": "^3.5|^3.6|^3.7|^3.8|^4.0",
+        "phpunit/phpunit": "~6|~7|~8",
+        "squizlabs/php_codesniffer": "^3.0",
+        "mockery/mockery": "^1.1"
     },
     "autoload": {
         "psr-4": {
@@ -40,9 +40,10 @@
         }
     },
     "scripts": {
-        "test": "phpunit",
-        "check-style": "phpcs src tests",
-        "fix-style": "phpcbf src tests"
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage",
+        "check-style": "phpcs src tests --extensions=php --ignore=*/src/migrations/*,*/src/resources/*,*/tests/*",
+        "fix-style": "phpcbf src tests --extensions=php"
     },
     "config": {
         "sort-packages": true

@@ -12,12 +12,12 @@ import shortener from '../app/shortener/store'
 import stats from '../app/stats/store'
 
 export default new Vuex.Store({
-  state,
-  getters,
-  mutations,
-  actions,
-  modules: {
-    shortener,
-    stats
-  }
+    state,
+    getters,
+    mutations,
+    actions,
+    modules: {
+        shortener,
+        stats
+    }
 })

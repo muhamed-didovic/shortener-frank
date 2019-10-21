@@ -38,10 +38,13 @@ class LinkCreationTest extends TestCase
     /** @test */
     public function link_without_scheme_can_be_shortened()
     {
-        $this->json('POST', config('shortener.routes.post_short_route'),
+        $this->json(
+            'POST',
+            config('shortener.routes.post_short_route'),
             [
                 'url' => 'www.google.com',
-            ])
+            ]
+        )
             ->assertJsonFragment([
                 'original_url'  => 'http://www.google.com',
                 'shortened_url' => config('shortener.url') . '/1',
@@ -68,10 +71,13 @@ class LinkCreationTest extends TestCase
     /** @test */
     public function link_with_scheme_can_be_shortened()
     {
-        $this->json('POST', config('shortener.routes.post_short_route'),
+        $this->json(
+            'POST',
+            config('shortener.routes.post_short_route'),
             [
                 'url' => 'http://www.google.com',
-            ])
+            ]
+        )
             ->assertJsonFragment([
                 'original_url'  => 'http://www.google.com',
                 'shortened_url' => config('shortener.url') . '/1',
@@ -127,18 +133,19 @@ class LinkCreationTest extends TestCase
 
         $reponse->assertJsonFragment(
             [
-                'original_url'  => $link->original_url,
-            ])
+                'original_url' => $link->original_url,
+            ]
+        )
             ->assertStatus(200);
 
         $json = json_decode($reponse->getContent());
 
+        $lastRequested = is_object($json->data->last_requested) ? $json->data->last_requested->date : $json->data->last_requested;
         $this->assertDatabaseHas(config('shortener.table'), [
             'original_url'   => $link->original_url,
-            'last_requested' => Carbon::parse($json->data->last_requested)->toDateTimeString(),
+            'last_requested' => Carbon::parse($lastRequested)->toDateTimeString(),
         ]);
-        $this->assertNotEquals(Carbon::parse($json->data->last_requested)->toDateTimeString(), $link->last_requested);
-        $this->assertTrue(Carbon::parse($json->data->last_requested)->notEqualTo($link->last_requested));
-
+        $this->assertNotEquals(Carbon::parse($lastRequested)->toDateTimeString(), $link->last_requested);
+        $this->assertTrue(Carbon::parse($lastRequested)->ne($link->last_requested));
     }
 }

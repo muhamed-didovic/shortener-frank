@@ -22,7 +22,9 @@ class ModifiesUrlRequestData
         }
 
         $validator = Validator::make($request->only('url'), [
-            'url' => 'url'
+            'url' => [
+                'regex:#((https?|ftp)://(\S*?\.\S*?))([\s)\[\]{},;"\':<]|\.\s|$)#i'
+            ],
         ]);
 
         if ($validator->fails()) {
