@@ -68,5 +68,4 @@ class LinkModelTest extends TestCase
 
         $this->assertNull($link->shortenedUrl());
     }
-
 }

@@ -14,10 +14,13 @@ class LinkShowTest extends TestCase
     {
         $link = factory(Link::class)->create();
 
-        $response = $this->json('GET', config('shortener.routes.post_short_route'),
+        $response = $this->json(
+            'GET',
+            config('shortener.routes.post_short_route'),
             [
                 'code' => $link->code,
-            ])
+            ]
+        )
             ->assertJsonFragment([
                 'original_url'  => $link->original_url,
                 'shortened_url' => $link->shortenedUrl(),
@@ -69,6 +72,6 @@ class LinkShowTest extends TestCase
         ]);
 
         $this->assertNotEquals(Carbon::parse($lastUsed)->toDateTimeString(), $link->last_used);
-        $this->assertTrue(Carbon::parse($lastUsed)->notEqualTo($link->last_used));
+        $this->assertTrue(Carbon::parse($lastUsed)->ne($link->last_used));
     }
 }

@@ -38,10 +38,13 @@ class LinkCreationTest extends TestCase
     /** @test */
     public function link_without_scheme_can_be_shortened()
     {
-        $this->json('POST', config('shortener.routes.post_short_route'),
+        $this->json(
+            'POST',
+            config('shortener.routes.post_short_route'),
             [
                 'url' => 'www.google.com',
-            ])
+            ]
+        )
             ->assertJsonFragment([
                 'original_url'  => 'http://www.google.com',
                 'shortened_url' => config('shortener.url') . '/1',
@@ -68,10 +71,13 @@ class LinkCreationTest extends TestCase
     /** @test */
     public function link_with_scheme_can_be_shortened()
     {
-        $this->json('POST', config('shortener.routes.post_short_route'),
+        $this->json(
+            'POST',
+            config('shortener.routes.post_short_route'),
             [
                 'url' => 'http://www.google.com',
-            ])
+            ]
+        )
             ->assertJsonFragment([
                 'original_url'  => 'http://www.google.com',
                 'shortened_url' => config('shortener.url') . '/1',
@@ -128,7 +134,8 @@ class LinkCreationTest extends TestCase
         $reponse->assertJsonFragment(
             [
                 'original_url'  => $link->original_url,
-            ])
+            ]
+        )
             ->assertStatus(200);
 
         $json = json_decode($reponse->getContent());
@@ -139,7 +146,6 @@ class LinkCreationTest extends TestCase
             'last_requested' => Carbon::parse($lastRequested)->toDateTimeString(),
         ]);
         $this->assertNotEquals(Carbon::parse($lastRequested)->toDateTimeString(), $link->last_requested);
-        $this->assertTrue(Carbon::parse($lastRequested)->notEqualTo($link->last_requested));
-
+        $this->assertTrue(Carbon::parse($lastRequested)->ne($link->last_requested));
     }
 }

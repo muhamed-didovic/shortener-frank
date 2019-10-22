@@ -1,3 +1,3 @@
 export const setMessage = (state, message) => {
-  state.message = message
+    state.message = message
 }

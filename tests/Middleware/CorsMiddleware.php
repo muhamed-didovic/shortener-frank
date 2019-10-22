@@ -35,7 +35,8 @@ class CorsMiddleware extends TestCase
 
         $middleware = new Cors;
 
-        $response = $middleware->handle($request, function () {});
+        $response = $middleware->handle($request, function () {
+        });
 
         $this->assertEquals($response->headers->get('Access-Control-Allow-Origin'), '*');
         $this->assertEquals($response->headers->get('Access-Control-Allow-Methods'), 'HEAD, GET, POST, PUT, PATCH, DELETE, OPTIONS');

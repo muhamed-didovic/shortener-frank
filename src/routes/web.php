@@ -13,7 +13,7 @@ Route::group(
         //get stats
         Route::get(config('shortener.routes.get_stats_route'), 'LinkStatsController@show');
         //ROUTE for vue
-        Route::get(config('shortener.routes.vue_route'), 'SinglePageController@show')->where('any', '.*');;
+        Route::get(config('shortener.routes.vue_route'), 'SinglePageController@show')->where('any', '.*');
+        ;
     }
 );
-

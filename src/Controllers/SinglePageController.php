@@ -20,13 +20,13 @@ class SinglePageController extends BaseController
     public function show(Request $request)
     {
         //when we find code in db
-        if (request()->segment(1) && $link = Link::whereCode(request()->segment(1))->first()){
+        if (request()->segment(1) && $link = Link::whereCode(request()->segment(1))->first()) {
             //todo: what if original_url is null
             return \Illuminate\Support\Facades\Redirect::to($link->original_url, 301);
         }
 
         //when code is provided but not found
-        if (!empty(request()->get('any'))){
+        if (!empty(request()->get('any'))) {
             return \Illuminate\Support\Facades\Redirect::to('/nope');
         }
 

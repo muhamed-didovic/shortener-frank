@@ -1,11 +1,11 @@
 export const url = (state) => {
-  return state.url
+    return state.url
 }
 
 export const shortened = (state) => {
-  return state.shortened
+    return state.shortened
 }
 
 export const waiting = (state) => {
-  return state.waiting
+    return state.waiting
 }
