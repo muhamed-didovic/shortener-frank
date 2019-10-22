@@ -7,7 +7,6 @@ use MuhamedDidovic\Shortener\Test\TestCase;
 
 class LinkModelTest extends TestCase
 {
-
     protected $mappings = [
         1 => 1,
         100 => '1C',
