@@ -2,8 +2,8 @@ import Shortener from '../components/Shortener'
 
 export default [
   {
-    path: '/',
-    name: 'home',
-    component: Shortener
-  }
-]
+        path: '/',
+            name: 'home',
+            component: Shortener
+    }
+    ]

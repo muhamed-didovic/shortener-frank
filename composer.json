@@ -42,8 +42,8 @@
     "scripts": {
         "test": "vendor/bin/phpunit",
         "test-coverage": "vendor/bin/phpunit --coverage-html coverage",
-        "check-style": "phpcs src tests",
-        "fix-style": "phpcbf src tests"
+        "check-style": "phpcs src tests --extensions=php",
+        "fix-style": "phpcbf src tests --extensions=php"
     },
     "config": {
         "sort-packages": true
