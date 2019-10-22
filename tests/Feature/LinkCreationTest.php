@@ -139,7 +139,7 @@ class LinkCreationTest extends TestCase
             'last_requested' => Carbon::parse($lastRequested)->toDateTimeString(),
         ]);
         $this->assertNotEquals(Carbon::parse($lastRequested)->toDateTimeString(), $link->last_requested);
-        $this->assertTrue(Carbon::parse($lastRequested)->notEqualTo($link->last_requested));
+        $this->assertTrue(Carbon::parse($lastRequested)->ne($link->last_requested));
 
     }
 }

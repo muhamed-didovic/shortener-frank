@@ -69,6 +69,6 @@ class LinkShowTest extends TestCase
         ]);
 
         $this->assertNotEquals(Carbon::parse($lastUsed)->toDateTimeString(), $link->last_used);
-        $this->assertTrue(Carbon::parse($lastUsed)->notEqualTo($link->last_used));
+        $this->assertTrue(Carbon::parse($lastUsed)->ne($link->last_used));
     }
 }
