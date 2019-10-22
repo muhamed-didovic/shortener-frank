@@ -1,11 +1,19 @@
-language: php
+# Travis CI (MIT License) configuration file
+# @link https://travis-ci.org/
+
+# Use new container based environment
+sudo: false
 
 cache:
     directories:
         - $HOME/.composer/cache
 
-sudo: false
+# Declare project language.
+# @link http://about.travis-ci.org/docs/user/languages/php/
+language: php
 
+# Declare versions of PHP to use. Use one decimal max.
+# @link http://docs.travis-ci.com/user/build-configuration/
 matrix:
     fast_finish: true
     include:
@@ -65,8 +73,9 @@ install:
     - travis_retry composer update ${COMPOSER_FLAGS} --prefer-dist --no-interaction --no-suggest
 
 script:
-    - vendor/bin/phpcs --standard=psr2 --extensions=php --ignore=*/src/migrations/*,*/src/resources/*,*/tests/*" src/
-    - vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover
+    - ./vendor/bin/phpcs -i
+    - ./vendor/bin/phpcs --standard=psr2 --extensions=php --ignore=*/src/migrations/*,*/src/resources/*,*/tests/*" src
+    - ./vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover
 
 after_script:
     - wget https://scrutinizer-ci.com/ocular.phar
