@@ -1,5 +1,5 @@
 <?php
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace MuhamedDidovic\Shortener;
 
@@ -29,11 +29,11 @@ class ShortenerServiceProvider extends ServiceProvider
         $this->loadMigrationsFrom(__DIR__ . '/migrations');
 
         $this->publishes([
-            $source                      => config_path('shortener.php'),
-            __DIR__ . '/resources/views' => resource_path('views/vendor/shortener'),
-            __DIR__ . '/migrations'      => database_path('migrations'),
-            __DIR__ . '/public/css'      => public_path('css/'),
-            __DIR__ . '/public/js'       => public_path('js/'),
+            $source                         => config_path('shortener.php'),
+            __DIR__ . '/migrations'         => database_path('migrations'),
+            __DIR__ . '/../resources/views' => resource_path('views/vendor/shortener'),
+            __DIR__ . '/../public/css'      => public_path('css/'),
+            __DIR__ . '/../public/js'       => public_path('js/'),
         ], 'shortener');
 
         //        $this->publishes([

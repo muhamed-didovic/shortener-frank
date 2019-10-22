@@ -27,7 +27,8 @@
         "orchestra/testbench": "^3.5|^3.6|^3.7|^3.8|^4.0",
         "phpunit/phpunit": "~6|~7|~8",
         "squizlabs/php_codesniffer": "^3.0",
-        "mockery/mockery": "^1.1"
+        "mockery/mockery": "^1.1",
+        "friendsofphp/php-cs-fixer": "^2.15"
     },
     "autoload": {
         "psr-4": {
@@ -42,8 +43,11 @@
     "scripts": {
         "test": "vendor/bin/phpunit",
         "test-coverage": "vendor/bin/phpunit --coverage-html coverage",
-        "check-style": "phpcs src tests --extensions=php --ignore=*/src/migrations/*,*/src/resources/*,*/tests/*",
-        "fix-style": "phpcbf src tests --extensions=php"
+        "check-style": "phpcs src tests --extensions=php --ignore=*/src/migrations/*,*/resources/*,*/tests/*,*/public/8",
+        "fix-style": "phpcbf src tests --extensions=php",
+        "cs-fix": [
+            "php-cs-fixer fix . --rules=@PSR2"
+        ]
     },
     "config": {
         "sort-packages": true
