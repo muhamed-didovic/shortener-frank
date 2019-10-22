@@ -17,7 +17,7 @@ checks:
         fix_identation_4spaces: true
         fix_doc_comments: true
 
-#tools:
-#    external_code_coverage:
-#        timeout: 600
-#        runs: 6
+tools:
+    external_code_coverage:
+        timeout: 600 #By default, Scrutinizer will wait 5 minutes for the code coverage information to arrive. If your test-suite runs longer than that, you can change the timeout:
+#        runs: 6 #Scrutinizer will wait for six code coverage submissions
