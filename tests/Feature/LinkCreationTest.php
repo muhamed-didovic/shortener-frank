@@ -133,7 +133,7 @@ class LinkCreationTest extends TestCase
 
         $reponse->assertJsonFragment(
             [
-                'original_url'  => $link->original_url,
+                'original_url' => $link->original_url,
             ]
         )
             ->assertStatus(200);

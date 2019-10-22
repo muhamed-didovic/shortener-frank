@@ -42,7 +42,7 @@
     "scripts": {
         "test": "vendor/bin/phpunit",
         "test-coverage": "vendor/bin/phpunit --coverage-html coverage",
-        "check-style": "phpcs src tests --extensions=php",
+        "check-style": "phpcs src tests --extensions=php --ignore=*/src/migrations/*,*/src/resources/*,*/tests/*",
         "fix-style": "phpcbf src tests --extensions=php"
     },
     "config": {
