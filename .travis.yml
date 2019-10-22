@@ -56,7 +56,7 @@ matrix:
 
 before_install:
     - travis_retry composer self-update
-    - travis_retry composer require --no-update --no-interaction "illuminate/support:${LARAVEL}" "orchestra/testbench:${TESTBENCH}" "phpunit/phpunit:${PHPUNIT}" "codedungeon/phpunit-result-printer:${PRETTY}"
+    - travis_retry composer require --no-update --no-interaction "illuminate/validation:${LARAVEL}" "illuminate/support:${LARAVEL}" "orchestra/testbench:${TESTBENCH}" "phpunit/phpunit:${PHPUNIT}" "codedungeon/phpunit-result-printer:${PRETTY}"
 
 install:
     - travis_retry composer update ${COMPOSER_FLAGS} --prefer-dist --no-interaction --no-suggest
