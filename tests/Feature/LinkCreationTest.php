@@ -133,7 +133,7 @@ class LinkCreationTest extends TestCase
 
         $json = json_decode($reponse->getContent());
 
-        $lastRequested = is_object($json->data->last_requested) ? $json->data->last_requested->toDateTimeString() : $json->data->last_requested;
+        $lastRequested = is_object($json->data->last_requested) ? $json->data->last_requested->date : $json->data->last_requested;
         $this->assertDatabaseHas(config('shortener.table'), [
             'original_url'   => $link->original_url,
             'last_requested' => Carbon::parse($lastRequested)->toDateTimeString(),
