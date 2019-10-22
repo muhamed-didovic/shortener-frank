@@ -33,7 +33,6 @@ class LinkStatsTest extends TestCase
 
     protected function expectedJson(Link $link)
     {
-
         return [
             'original_url'    => $link->original_url,
             'shortened_url'   => $link->shortenedUrl(),
