@@ -5,6 +5,7 @@
 [![Build Status][ico-travis]][link-travis]
 [![Coverage Status][ico-scrutinizer]][link-scrutinizer]
 [![Quality Score][ico-code-quality]][link-code-quality]
+[![StyleCI][ico-style]][link-style]
 [![Total Downloads][ico-downloads]][link-downloads]
 
 This is where your description should go. Try and limit it to a paragraph or two, and maybe throw in a mention of what
@@ -73,6 +74,7 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 [ico-scrutinizer]: https://img.shields.io/scrutinizer/coverage/g/muhamed-didovic/shortener-frank.svg?style=flat-square
 [ico-code-quality]: https://img.shields.io/scrutinizer/g/muhamed-didovic/shortener-frank.svg?style=flat-square
 [ico-downloads]: https://img.shields.io/packagist/dt/muhamed-didovic/shortener-frank.svg?style=flat-square
+[ico-styleci]: https://github.styleci.io/repos/214193290/shield?branch=master
 
 [link-packagist]: https://packagist.org/packages/muhamed-didovic/shortener-frank
 [link-travis]: https://travis-ci.org/muhamed-didovic/shortener-frank
@@ -81,3 +83,5 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 [link-downloads]: https://packagist.org/packages/muhamed-didovic/shortener-frank
 [link-author]: https://github.com/muhamed-didovic
 [link-contributors]: ../../contributors
+[link-styleci]: https://github.styleci.io/repos/214193290
+
