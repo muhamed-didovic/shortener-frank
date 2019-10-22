@@ -62,8 +62,7 @@ class LinkShowTest extends TestCase
         $reponse = $this->json('GET', config('shortener.routes.get_short_route'), ['code' => $link->code]);
         $json = json_decode($reponse->getContent());
 
-        dd($json->data->last_used);
-        $lastUsed = is_object($json->data->last_used) ? $json->data->last_used->toDateTimeString() : $json->data->last_used;
+        $lastUsed = is_object($json->data->last_used) ? $json->data->last_used->date : $json->data->last_used;
         $this->assertDatabaseHas(config('shortener.table'), [
             'original_url' => $link->original_url,
             'last_used'    => Carbon::parse($lastUsed)->toDateTimeString(),
