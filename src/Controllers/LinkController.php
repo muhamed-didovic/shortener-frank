@@ -48,7 +48,7 @@ class LinkController extends BaseController
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
+        $request->validate([
             'url' => [
                 'required',
                 'regex:#((https?|ftp)://(\S*?\.\S*?))([\s)\[\]{},;"\':<]|\.\s|$)#i'

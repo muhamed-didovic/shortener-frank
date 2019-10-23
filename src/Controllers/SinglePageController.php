@@ -17,7 +17,7 @@ class SinglePageController extends BaseController
      * @param Request $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
      */
-    public function show(Request $request)
+    public function show()
     {
         //when we find code in db
         if (request()->segment(1) && $link = Link::whereCode(request()->segment(1))->first()) {
