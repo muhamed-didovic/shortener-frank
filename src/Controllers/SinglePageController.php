@@ -14,7 +14,7 @@ use MuhamedDidovic\Shortener\Link;
 class SinglePageController extends BaseController
 {
     /**
-     * @param Request $request
+     * 
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
      */
     public function show()
