@@ -26,7 +26,7 @@ class ShortenerServiceProvider extends ServiceProvider
 
         $this->loadViewsFrom(__DIR__ . '/views', 'shortener');
         $this->loadRoutesFrom(__DIR__ . '/routes/web.php');
-        $this->loadMigrationsFrom(__DIR__ . '/migrations');
+        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
 
         $this->publishes([
             $source                         => config_path('shortener.php'),

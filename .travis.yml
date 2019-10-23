@@ -74,7 +74,7 @@ install:
 
 script:
     - vendor/bin/phpcs -i
-    - vendor/bin/phpcs --standard=psr2 --ignore=*/src/migrations/*,*/resources/*,*/tests/*,*/public/* src/
+    - vendor/bin/phpcs --standard=psr2 --ignore=*/database/migrations/*,*/resources/*,*/tests/*,*/public/* src/
     - vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover
 
 after_script:

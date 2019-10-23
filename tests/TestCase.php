@@ -21,6 +21,7 @@ abstract class TestCase extends Orchestra
         $this->withFactories(__DIR__ . '/database/factories');
         $this->artisan('migrate', ['--database' => 'testing']);
     }
+
     /**
      * Get package providers.  At a minimum this is the package being tested, but also
      * would include packages upon which our package depends, e.g. Cartalyst/Sentry
@@ -54,7 +55,7 @@ abstract class TestCase extends Orchestra
             'prefix'   => '',
         ]);
     }
-    
+
     /**
      * Get package aliases.  In a normal app environment these would be added to
      * the 'aliases' array in the config/app.php file.  If your package exposes an
@@ -97,7 +98,7 @@ abstract class TestCase extends Orchestra
     {
         Link::flushEventListeners();
         $link = factory(Link::class)->create([
-            'code' => 'abc'
+            'code' => 'abc',
         ]);
 
         $users = \DB::table(config('shortener.table'))->where('id', '=', 1)->first();
