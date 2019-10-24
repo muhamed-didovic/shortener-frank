@@ -2,7 +2,6 @@
 
 namespace MuhamedDidovic\Shortener\Controllers;
 
-
 use Illuminate\Routing\Controller as BaseController;
 use MuhamedDidovic\Shortener\Link;
 
