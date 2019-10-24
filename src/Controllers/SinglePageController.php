@@ -2,8 +2,7 @@
 
 namespace MuhamedDidovic\Shortener\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
+
 use Illuminate\Routing\Controller as BaseController;
 use MuhamedDidovic\Shortener\Link;
 
@@ -30,6 +29,7 @@ class SinglePageController extends BaseController
         }
 
         //return VUE spa app
+        //todo - change name
         return view('shortener::frontend-test');
     }
 }
