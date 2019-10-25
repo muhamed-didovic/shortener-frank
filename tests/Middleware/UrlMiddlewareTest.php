@@ -13,7 +13,7 @@ class UrlMiddlewareTest extends TestCase
             ['google.com', 'http://google.com'],
             ['ftp://www.google.com', 'ftp://www.google.com'],
             ['http://www.google.com', 'http://www.google.com'],
-            ['https://www.google.com', 'https://www.google.com']
+            ['https://www.google.com', 'https://www.google.com'],
         ];
     }
 

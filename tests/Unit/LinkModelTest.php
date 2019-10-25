@@ -38,9 +38,9 @@ class LinkModelTest extends TestCase
     public function can_get_model_by_code()
     {
         $link = factory(Link::class)->create([
-            'code' => 'abc'
+            'code' => 'abc',
         ]);
-        
+
         $model = $link->byCode($link->code)->first();
 
         $this->assertInstanceOf(Link::class, $model);
@@ -51,11 +51,10 @@ class LinkModelTest extends TestCase
     public function can_get_shortened_url_from_link_model()
     {
         $link = factory(Link::class)->create([
-            'code' => 'abc'
+            'code' => 'abc',
         ]);
 
-
-        $this->assertEquals($link->shortenedUrl(), config('shortener.url') . '/' . $link->code);
+        $this->assertEquals($link->shortenedUrl(), config('shortener.url').'/'.$link->code);
     }
 
     /** @test */

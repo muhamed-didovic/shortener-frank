@@ -2,11 +2,10 @@
 
 namespace MuhamedDidovic\Shortener\Test;
 
-use MuhamedDidovic\Shortener\ShortenerServiceProvider;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Orchestra\Testbench\TestCase as Orchestra;
 use MuhamedDidovic\Shortener\Link;
-use Carbon\Carbon;
+use Orchestra\Testbench\TestCase as Orchestra;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use MuhamedDidovic\Shortener\ShortenerServiceProvider;
 
 abstract class TestCase extends Orchestra
 {
@@ -18,7 +17,7 @@ abstract class TestCase extends Orchestra
     protected function setUp(): void
     {
         parent::setUp();
-        $this->withFactories(__DIR__ . '/database/factories');
+        $this->withFactories(__DIR__.'/database/factories');
         $this->artisan('migrate', ['--database' => 'testing']);
     }
 

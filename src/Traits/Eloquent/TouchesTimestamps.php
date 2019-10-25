@@ -3,8 +3,7 @@
 namespace MuhamedDidovic\Shortener\Traits\Eloquent;
 
 /**
- * Trait TouchesTimestamps
- * @package MuhamedDidovic\Shortener\Traits\Eloquent
+ * Trait TouchesTimestamps.
  */
 trait TouchesTimestamps
 {

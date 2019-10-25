@@ -1,13 +1,13 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace MuhamedDidovic\Shortener\Traits;
 
 use MuhamedDidovic\Shortener\Link;
 
 /**
- * Trait Response
- * @package MuhamedDidovic\Shortener\Traits
+ * Trait Response.
  */
 trait Response
 {
