@@ -14,3 +14,5 @@
 /phpunit.xml.dist            export-ignore
 /tests                       export-ignore
 /docs                        export-ignore
+/.php_cs.cache               export-ignore
+/.phpunit.result.cache       export-ignore

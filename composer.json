@@ -24,7 +24,6 @@
     },
     "require-dev": {
         "codedungeon/phpunit-result-printer": "^0.26",
-        "friendsofphp/php-cs-fixer": "^2.15",
         "mockery/mockery": "^1.1",
         "orchestra/testbench": "^3.5|^3.6|^3.7|^3.8|^4.0",
         "phpunit/phpunit": "~6|~7|~8",
@@ -44,10 +43,7 @@
         "test": "vendor/bin/phpunit",
         "test-coverage": "vendor/bin/phpunit --coverage-html coverage",
         "check-style": "phpcs src tests --extensions=php --ignore=*/database/migrations/*,*/resources/*,*/tests/*,*/public/*",
-        "fix-style": "phpcbf src tests --extensions=php",
-        "cs-fix": [
-            "php-cs-fixer fix . --rules=@PSR2"
-        ]
+        "fix-style": "phpcbf src tests --extensions=php"
     },
     "config": {
         "sort-packages": true
