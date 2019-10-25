@@ -1,10 +1,11 @@
 <?php
+
 declare(strict_types=1);
 
 namespace MuhamedDidovic\Shortener\Middleware;
 
-use Illuminate\Support\Facades\Validator;
 use Closure;
+use Illuminate\Support\Facades\Validator;
 
 class ModifiesUrlRequestData
 {
@@ -17,19 +18,19 @@ class ModifiesUrlRequestData
      */
     public function handle($request, Closure $next)
     {
-        if (!$request->has('url')) {
+        if (! $request->has('url')) {
             return $next($request);
         }
 
         $validator = Validator::make($request->only('url'), [
             'url' => [
-                'regex:#((https?|ftp)://(\S*?\.\S*?))([\s)\[\]{},;"\':<]|\.\s|$)#i'
+                'regex:#((https?|ftp)://(\S*?\.\S*?))([\s)\[\]{},;"\':<]|\.\s|$)#i',
             ],
         ]);
 
         if ($validator->fails()) {
             $request->merge([
-                'url' => 'http://' . $request->url
+                'url' => 'http://'.$request->url,
             ]);
         }
 

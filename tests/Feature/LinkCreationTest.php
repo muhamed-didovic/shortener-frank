@@ -2,13 +2,12 @@
 
 namespace MuhamedDidovic\Shortener\Test\Feature;
 
-use MuhamedDidovic\Shortener\Link;
 use Carbon\Carbon;
+use MuhamedDidovic\Shortener\Link;
 use MuhamedDidovic\Shortener\Test\TestCase;
 
 class LinkCreationTest extends TestCase
 {
-
     /** @test */
     public function fails_if_no_url_given()
     {
@@ -47,7 +46,7 @@ class LinkCreationTest extends TestCase
         )
             ->assertJsonFragment([
                 'original_url'  => 'http://www.google.com',
-                'shortened_url' => config('shortener.url') . '/1',
+                'shortened_url' => config('shortener.url').'/1',
                 'code'          => '1',
             ])
             ->assertStatus(200);
@@ -80,7 +79,7 @@ class LinkCreationTest extends TestCase
         )
             ->assertJsonFragment([
                 'original_url'  => 'http://www.google.com',
-                'shortened_url' => config('shortener.url') . '/1',
+                'shortened_url' => config('shortener.url').'/1',
                 'code'          => '1',
             ])
             ->assertStatus(200);

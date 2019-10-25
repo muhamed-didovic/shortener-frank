@@ -2,12 +2,11 @@
 
 namespace MuhamedDidovic\Shortener\Controllers;
 
-use Illuminate\Routing\Controller as BaseController;
 use MuhamedDidovic\Shortener\Link;
+use Illuminate\Routing\Controller as BaseController;
 
 /**
- * Class SinglePageController
- * @package MuhamedDidovic\Shortener\Controllers
+ * Class SinglePageController.
  */
 class SinglePageController extends BaseController
 {
@@ -23,7 +22,7 @@ class SinglePageController extends BaseController
         }
 
         //when code is provided but not found
-        if (!empty(request()->get('any'))) {
+        if (! empty(request()->get('any'))) {
             return \Illuminate\Support\Facades\Redirect::to('/nope');
         }
 

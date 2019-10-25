@@ -2,13 +2,12 @@
 
 namespace MuhamedDidovic\Shortener\Test\Feature;
 
-use MuhamedDidovic\Shortener\Link;
 use Carbon\Carbon;
+use MuhamedDidovic\Shortener\Link;
 use MuhamedDidovic\Shortener\Test\TestCase;
 
 class LinkShowTest extends TestCase
 {
-
     /** @test */
     public function requested_link_details_are_returned()
     {

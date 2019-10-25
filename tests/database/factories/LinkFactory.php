@@ -1,8 +1,7 @@
 <?php
 
-use MuhamedDidovic\Shortener\Link;
 use Faker\Generator as Faker;
-use Illuminate\Support\Str;
+use MuhamedDidovic\Shortener\Link;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +16,6 @@ use Illuminate\Support\Str;
 
 $factory->define(Link::class, function (Faker $faker) {
     return [
-        'original_url' => $faker->url
+        'original_url' => $faker->url,
     ];
 });

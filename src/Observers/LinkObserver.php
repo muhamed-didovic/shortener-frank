@@ -1,11 +1,12 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace MuhamedDidovic\Shortener\Observers;
 
-use MuhamedDidovic\Shortener\Exceptions\CodeGenerationException;
-use MuhamedDidovic\Shortener\Link;
 use Carbon\Carbon;
+use MuhamedDidovic\Shortener\Link;
+use MuhamedDidovic\Shortener\Exceptions\CodeGenerationException;
 
 class LinkObserver
 {

@@ -7,7 +7,6 @@ use MuhamedDidovic\Shortener\Test\TestCase;
 
 class LinkStatsTest extends TestCase
 {
-
     /** @test */
     public function link_stats_can_be_shown_by_shortened_code()
     {
@@ -39,7 +38,7 @@ class LinkStatsTest extends TestCase
             'code'            => $link->code,
             'requested_count' => $link->requested_count,
             'used_count'      => $link->used_count,
-            'last_requested'  => is_object($link->last_requested)  ? $link->last_requested->toDateTimeString() : $link->last_requested->toDateTimeString(),
+            'last_requested'  => is_object($link->last_requested) ? $link->last_requested->toDateTimeString() : $link->last_requested->toDateTimeString(),
             'last_used'       => $link->last_used ? $link->last_used : null,
         ];
     }

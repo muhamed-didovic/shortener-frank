@@ -1,19 +1,17 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace MuhamedDidovic\Shortener\Controllers;
 
-use Illuminate\Support\Facades\Validator;
-use MuhamedDidovic\Shortener\Link;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
+use MuhamedDidovic\Shortener\Link;
 use Illuminate\Support\Facades\Cache;
-use Illuminate\Routing\Controller as BaseController;
 use MuhamedDidovic\Shortener\Traits\Response;
+use Illuminate\Routing\Controller as BaseController;
 
 /**
- * Class LinkController
- * @package MuhamedDidovic\Shortener\Controllers
+ * Class LinkController.
  */
 class LinkController extends BaseController
 {
@@ -51,7 +49,7 @@ class LinkController extends BaseController
         $request->validate([
             'url' => [
                 'required',
-                'regex:#((https?|ftp)://(\S*?\.\S*?))([\s)\[\]{},;"\':<]|\.\s|$)#i'
+                'regex:#((https?|ftp)://(\S*?\.\S*?))([\s)\[\]{},;"\':<]|\.\s|$)#i',
             ],
         ], [
             'url.required'   => 'Please enter a URL to shorten.',
@@ -62,7 +60,7 @@ class LinkController extends BaseController
             'original_url' => $request->get('url'),
         ]);
 
-        if (!$link->exists) {
+        if (! $link->exists) {
             $link->save();
         }
 

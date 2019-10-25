@@ -1,11 +1,11 @@
 <?php
+
 declare(strict_types=1);
 
 namespace MuhamedDidovic\Shortener\Helpers;
 
 /**
- * Class Math
- * @package MuhamedDidovic\Shortener\Helpers
+ * Class Math.
  */
 class Math
 {
@@ -13,7 +13,7 @@ class Math
      * @var string
      */
     private $base = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    
+
     /**
      * @param     $value
      * @param int $base
@@ -28,7 +28,7 @@ class Math
         while ($q) {
             $r = $q % $base;
             $q = floor($q / $base);
-            $result = $this->base[$r] . $result;
+            $result = $this->base[$r].$result;
         }
 
         return $result;

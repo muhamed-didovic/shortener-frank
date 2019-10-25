@@ -1,17 +1,16 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace MuhamedDidovic\Shortener;
 
-use MuhamedDidovic\Shortener\Exceptions\CodeGenerationException;
-use MuhamedDidovic\Shortener\Helpers\Math;
-use MuhamedDidovic\Shortener\Traits\Eloquent\BindsDynamically;
-use MuhamedDidovic\Shortener\Traits\Eloquent\TouchesTimestamps;
 use Illuminate\Database\Eloquent\Model;
+use MuhamedDidovic\Shortener\Helpers\Math;
+use MuhamedDidovic\Shortener\Traits\Eloquent\TouchesTimestamps;
+use MuhamedDidovic\Shortener\Exceptions\CodeGenerationException;
 
 /**
- * Class Link
- * @package MuhamedDidovic\Shortener
+ * Class Link.
  */
 class Link extends Model
 {
@@ -73,9 +72,9 @@ class Link extends Model
     public function shortenedUrl()
     {
         if ($this->code === null) {
-            return null;
+            return;
         }
 
-        return config('shortener.url') . '/' . $this->code;
+        return config('shortener.url').'/'.$this->code;
     }
 }

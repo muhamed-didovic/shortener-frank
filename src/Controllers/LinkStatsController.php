@@ -1,17 +1,17 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace MuhamedDidovic\Shortener\Controllers;
 
 use Cache;
-use MuhamedDidovic\Shortener\Link;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controller as BaseController;
+use MuhamedDidovic\Shortener\Link;
 use MuhamedDidovic\Shortener\Traits\Response;
+use Illuminate\Routing\Controller as BaseController;
 
 /**
- * Class LinkStatsController
- * @package MuhamedDidovic\Shortener\Controllers
+ * Class LinkStatsController.
  */
 class LinkStatsController extends BaseController
 {
@@ -34,8 +34,8 @@ class LinkStatsController extends BaseController
         }
 
         return $this->linkResponse($link, [
-            'requested_count' => (int)$link->requested_count,
-            'used_count'      => (int)$link->used_count,
+            'requested_count' => (int) $link->requested_count,
+            'used_count'      => (int) $link->used_count,
             'last_requested'  => $link->last_requested->toDateTimeString(),
             'last_used'       => $link->last_used ? $link->last_used->toDateTimeString() : null,
         ]);

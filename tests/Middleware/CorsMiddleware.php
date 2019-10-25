@@ -2,8 +2,8 @@
 
 namespace Tests\Middleware;
 
-use App\Http\Middleware\Cors;
 use Illuminate\Http\Request;
+use App\Http\Middleware\Cors;
 use Illuminate\Http\Response;
 use MuhamedDidovic\Shortener\Test\TestCase;
 
