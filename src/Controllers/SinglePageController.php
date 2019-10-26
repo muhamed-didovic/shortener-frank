@@ -2,6 +2,7 @@
 
 namespace MuhamedDidovic\Shortener\Controllers;
 
+use Illuminate\Support\Facades\Cache;
 use MuhamedDidovic\Shortener\Models\Link;
 use Illuminate\Routing\Controller as BaseController;
 
@@ -15,19 +16,32 @@ class SinglePageController extends BaseController
      */
     public function show()
     {
-        //when we find code in db
-        if (request()->segment(1) && $link = Link::whereCode(request()->segment(1))->first()) {
-            //todo: what if original_url is null
-            return \Illuminate\Support\Facades\Redirect::to($link->original_url, 301);
+        //when code is found in DB
+        if ($code = request()->segment(1)) {
+
+            $link = Cache::rememberForever("link.{$code}", function () use ($code) {
+                return Link::byCode($code)->first();
+            });
+            
+            if ($link) {
+                $link->increment('used_count');
+                $link->touchTimestamp('last_used');
+
+                return \Illuminate\Support\Facades\Redirect::to($link->original_url, 301);
+            }
+
+            return \Illuminate\Support\Facades\Redirect::to('/nope');
+
+
         }
 
         //when code is provided but not found
-        if (! empty(request()->get('any'))) {
-            return \Illuminate\Support\Facades\Redirect::to('/nope');
-        }
+        //        if (!empty(request()->segment(1))) {
+        //            return \Illuminate\Support\Facades\Redirect::to('/nope');
+        //        }
+
 
         //return VUE spa app
-        //todo - change name
         return view('shortener::shortener-view');
     }
 }
