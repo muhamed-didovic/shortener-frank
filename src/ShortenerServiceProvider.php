@@ -5,10 +5,12 @@ declare(strict_types=1);
 namespace MuhamedDidovic\Shortener;
 
 use Illuminate\Support\ServiceProvider;
+use MuhamedDidovic\Shortener\Console\ChuckNorrisJoke;
 use MuhamedDidovic\Shortener\Models\Link;
 use Laravel\Lumen\Application as LumenApplication;
 use MuhamedDidovic\Shortener\Observers\LinkObserver;
 use Illuminate\Foundation\Application as LaravelApplication;
+use MuhamedDidovic\Shortener\Console\ShortenerCommand;
 
 class ShortenerServiceProvider extends ServiceProvider
 {
@@ -59,7 +61,9 @@ class ShortenerServiceProvider extends ServiceProvider
         ], 'lang');*/
 
         // Registering package commands.
-        // $this->commands([]);
+         $this->commands([
+             ShortenerCommand::class
+         ]);
 
         //        $this->publishes([
         //            __DIR__ . '/views' => resource_path('views/vendor/shortener'),

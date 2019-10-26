@@ -28,6 +28,6 @@ class SinglePageController extends BaseController
 
         //return VUE spa app
         //todo - change name
-        return view('shortener::frontend-test');
+        return view('shortener::shortener-view');
     }
 }

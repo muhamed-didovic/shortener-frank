@@ -5,7 +5,7 @@ namespace MuhamedDidovic\Shortener\Test\Unit;
 use MuhamedDidovic\Shortener\Test\TestCase;
 use MuhamedDidovic\Shortener\Facades\Shortener;
 
-class MathTest extends TestCase
+class ShortenerTest extends TestCase
 {
     public function mappingsProvider()
     {
