@@ -18,11 +18,10 @@ class SinglePageController extends BaseController
     {
         //when code is found in DB
         if ($code = request()->segment(1)) {
-
             $link = Cache::rememberForever("link.{$code}", function () use ($code) {
                 return Link::byCode($code)->first();
             });
-            
+
             if ($link) {
                 $link->increment('used_count');
                 $link->touchTimestamp('last_used');
@@ -31,15 +30,12 @@ class SinglePageController extends BaseController
             }
 
             return \Illuminate\Support\Facades\Redirect::to('/nope');
-
-
         }
 
         //when code is provided but not found
         //        if (!empty(request()->segment(1))) {
         //            return \Illuminate\Support\Facades\Redirect::to('/nope');
         //        }
-
 
         //return VUE spa app
         return view('shortener::shortener-view');
