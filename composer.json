@@ -55,7 +55,10 @@
         "laravel": {
             "providers": [
                 "MuhamedDidovic\\Shortener\\ShortenerServiceProvider"
-            ]
+            ],
+            "aliases": {
+                "Shortener": "MuhamedDidovic\\Shortener\\Facades\\Shortener"
+            }
         }
     }
 }

@@ -2,7 +2,7 @@
 
 namespace MuhamedDidovic\Shortener\Test\Feature;
 
-use MuhamedDidovic\Shortener\Link;
+use MuhamedDidovic\Shortener\Models\Link;
 use MuhamedDidovic\Shortener\Test\TestCase;
 
 class LinkStatsTest extends TestCase

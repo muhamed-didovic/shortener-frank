@@ -2,6 +2,7 @@
 
 namespace MuhamedDidovic\Shortener\Test\Unit;
 
+use MuhamedDidovic\Shortener\Facades\Shortener;
 use MuhamedDidovic\Shortener\Test\TestCase;
 
 class MathTest extends TestCase
@@ -22,6 +23,6 @@ class MathTest extends TestCase
      */
     public function correctly_encodes_values($input, $expected)
     {
-        $this->assertEquals($expected, (new \MuhamedDidovic\Shortener\Helpers\Math)->toBase($input));
+        $this->assertEquals($expected, Shortener::toBase($input));
     }
 }

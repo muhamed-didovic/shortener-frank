@@ -3,7 +3,7 @@
 namespace MuhamedDidovic\Shortener\Test\Feature;
 
 use Carbon\Carbon;
-use MuhamedDidovic\Shortener\Link;
+use MuhamedDidovic\Shortener\Models\Link;
 use MuhamedDidovic\Shortener\Test\TestCase;
 
 class LinkShowTest extends TestCase

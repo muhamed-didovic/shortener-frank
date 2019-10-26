@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace MuhamedDidovic\Shortener\Helpers;
+namespace MuhamedDidovic\Shortener;
 
 /**
  * Class Math.
  */
-class Math
+class Shortener
 {
     /**
      * @var string

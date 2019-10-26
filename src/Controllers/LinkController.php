@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace MuhamedDidovic\Shortener\Controllers;
 
 use Illuminate\Http\Request;
-use MuhamedDidovic\Shortener\Link;
+use MuhamedDidovic\Shortener\Models\Link;
 use Illuminate\Support\Facades\Cache;
 use MuhamedDidovic\Shortener\Traits\Response;
 use Illuminate\Routing\Controller as BaseController;

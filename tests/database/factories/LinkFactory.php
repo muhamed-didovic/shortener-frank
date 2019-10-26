@@ -1,7 +1,7 @@
 <?php
 
 use Faker\Generator as Faker;
-use MuhamedDidovic\Shortener\Link;
+use MuhamedDidovic\Shortener\Models\Link;
 
 /*
 |--------------------------------------------------------------------------

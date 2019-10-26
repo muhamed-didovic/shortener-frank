@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace MuhamedDidovic\Shortener;
+namespace MuhamedDidovic\Shortener\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use MuhamedDidovic\Shortener\Helpers\Math;
+use MuhamedDidovic\Shortener\Facades\Shortener;
 use MuhamedDidovic\Shortener\Traits\Eloquent\TouchesTimestamps;
 use MuhamedDidovic\Shortener\Exceptions\CodeGenerationException;
 
@@ -54,7 +54,7 @@ class Link extends Model
             throw new CodeGenerationException;
         }
 
-        return (new Math)->toBase($this->id);
+        return Shortener::toBase($this->id);
     }
 
     /**

@@ -2,7 +2,7 @@
 
 namespace MuhamedDidovic\Shortener\Test;
 
-use MuhamedDidovic\Shortener\Link;
+use MuhamedDidovic\Shortener\Models\Link;
 use Orchestra\Testbench\TestCase as Orchestra;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use MuhamedDidovic\Shortener\ShortenerServiceProvider;

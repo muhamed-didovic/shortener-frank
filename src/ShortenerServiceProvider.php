@@ -8,6 +8,7 @@ use Illuminate\Support\ServiceProvider;
 use Laravel\Lumen\Application as LumenApplication;
 use MuhamedDidovic\Shortener\Observers\LinkObserver;
 use Illuminate\Foundation\Application as LaravelApplication;
+use MuhamedDidovic\Shortener\Models\Link;
 
 class ShortenerServiceProvider extends ServiceProvider
 {
@@ -29,7 +30,7 @@ class ShortenerServiceProvider extends ServiceProvider
          */
         $source = realpath($raw = __DIR__.'/../config/shortener.php') ?: $raw;
         $this->loadViewsFrom(__DIR__.'/views', 'shortener');
-        $this->loadRoutesFrom(__DIR__.'/routes/web.php');
+        $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
 
         $this->publishes([
@@ -83,5 +84,12 @@ class ShortenerServiceProvider extends ServiceProvider
 
         // Automatically apply the package configuration
         $this->mergeConfigFrom($source, 'shortener');
+
+        // Register the main class to use with the facade
+        $this->app->singleton('shortener', function () {
+            return new Shortener();
+        });
+
+        $this->app->alias('shortener', Shortener::class);
     }
 }

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace MuhamedDidovic\Shortener\Traits;
 
-use MuhamedDidovic\Shortener\Link;
+use MuhamedDidovic\Shortener\Models\Link;
 
 /**
  * Trait Response.

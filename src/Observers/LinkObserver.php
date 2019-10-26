@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace MuhamedDidovic\Shortener\Observers;
 
 use Carbon\Carbon;
-use MuhamedDidovic\Shortener\Link;
+use MuhamedDidovic\Shortener\Models\Link;
 use MuhamedDidovic\Shortener\Exceptions\CodeGenerationException;
 
 class LinkObserver
