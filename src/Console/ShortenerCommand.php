@@ -7,8 +7,7 @@ use Illuminate\Console\Command;
 use MuhamedDidovic\Shortener\Models\Link;
 
 /**
- * Class Shortener
- * @package MuhamedDidovic\Shortener\Console
+ * Class Shortener.
  */
 class ShortenerCommand extends Command
 {
@@ -26,15 +25,12 @@ class ShortenerCommand extends Command
      */
     protected $description = 'Delete rows where column "code" is null';
 
-    /**
-     *
-     */
     public function handle()
     {
         DB::beginTransaction();
         try {
             $links = Link::whereNull('code')->delete();
-            $this->info('Deleted rows:' . $links);
+            $this->info('Deleted rows:'.$links);
             DB::commit();
         } catch (Exception $e) {
             DB::rollBack();

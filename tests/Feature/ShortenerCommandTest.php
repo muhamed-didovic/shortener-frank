@@ -8,7 +8,6 @@ use MuhamedDidovic\Shortener\Test\TestCase;
 
 class ShortenerCommandTest extends TestCase
 {
-
     /** @test */
     public function the_console_command_returns_found_null_values()
     {
@@ -18,13 +17,13 @@ class ShortenerCommandTest extends TestCase
         factory(Link::class)->create();
         factory(Link::class)->create();
         factory(Link::class)->create([
-            'code' => 'abc'
+            'code' => 'abc',
         ]);
 
         $this->artisan('shortener:clean');
         $output = Artisan::output();
 
-        $this->assertSame('Deleted rows:2' . PHP_EOL, $output);
+        $this->assertSame('Deleted rows:2'.PHP_EOL, $output);
     }
 
     /** @test */
@@ -38,6 +37,6 @@ class ShortenerCommandTest extends TestCase
         $this->artisan('shortener:clean');
         $output = Artisan::output();
 
-        $this->assertSame('Deleted rows:0' . PHP_EOL, $output);
+        $this->assertSame('Deleted rows:0'.PHP_EOL, $output);
     }
 }
