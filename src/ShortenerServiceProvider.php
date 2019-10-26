@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace MuhamedDidovic\Shortener;
 
 use Illuminate\Support\ServiceProvider;
+use MuhamedDidovic\Shortener\Models\Link;
 use Laravel\Lumen\Application as LumenApplication;
 use MuhamedDidovic\Shortener\Observers\LinkObserver;
 use Illuminate\Foundation\Application as LaravelApplication;
-use MuhamedDidovic\Shortener\Models\Link;
 
 class ShortenerServiceProvider extends ServiceProvider
 {
