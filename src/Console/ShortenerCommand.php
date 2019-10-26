@@ -3,6 +3,7 @@
 namespace MuhamedDidovic\Shortener\Console;
 
 use DB;
+use Exception;
 use Illuminate\Console\Command;
 use MuhamedDidovic\Shortener\Models\Link;
 
