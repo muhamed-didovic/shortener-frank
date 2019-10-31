@@ -224,6 +224,13 @@ Last fourth route (`/` is default endpoint) and is used for Vue.js to show view.
 ### Important Node
 Because there is `/` route to show view with the form element and probably it is used already in your project so you can change
 in shortener.php config file that route with endpoint that you want or you can comment/remove your `/` route 
+
+Another info you can change name of table (default table name is `links`) in shortener.php config and also which URL should be used for redirecting,
+default is:
+
+```
+ 'url' => env('APP_URL', 'http://frank.test'),
+``` 
   
 <a name="change-log"></a>  
   
