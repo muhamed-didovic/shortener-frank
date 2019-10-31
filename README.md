@@ -8,9 +8,33 @@
 [![StyleCI][ico-styleci]][link-styleci]
 [![Total Downloads][ico-downloads]][link-downloads]
 
-This is where your description should go. Try and limit it to a paragraph or two, and maybe throw in a mention of what
-PSRs you support to avoid any confusion with users and contributors.
+This Laravel package allows you to shorten a URL, it comes also with frontend part which is done in vue.js and vuex.
+You can publish all files like: views, config, migrations this is backend related and for frontend you can publish js and css 
+file and change them however you will.
+**Basic Docs**
 
+* [Installation](#installation)
+* [Chain providers](#chain-providers)
+* [Retrieve link](#retrieve-link)
+* [Contribution](#contribution)
+
+<a name="installation"></a>
+
+## Installation
+
+Laravel Exceptions requires [PHP](https://php.net) 7.1-7.3. This particular version supports Laravel 5.5-5.8 and 6 only.
+
+To get the latest version, simply require the project using [Composer](https://getcomposer.org):
+
+Via Composer
+
+``` bash
+$ composer require muhamed-didovic/shortener-frank
+```
+
+Once installed, if you are not using automatic package discovery, then you need to register the `MuhamedDidovic\Shortener\ShortenerServiceProvider` service provider in your `config/app.php`,
+and optinally add to aliases `'Shortener' => MuhamedDidovic\\Shortener\\Facades\\Shortener::class` 
+ 
 ## Structure
 
 If any of the following are applicable to your project, then the directory structure should follow industry best practices by being named the following.
@@ -26,15 +50,8 @@ vendor/
 ```
 
 
-## Install
-
-Via Composer
-
-``` bash
-$ composer require muhamed-didovic/shortener-frank
-```
-
 ## Usage
+
 
 ``` php
 $skeleton = new MuhamedDidovic\Shortener();
