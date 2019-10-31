@@ -2,6 +2,8 @@
 
 namespace MuhamedDidovic\Shortener\Test;
 
+use Illuminate\Console\OutputStyle;
+use Illuminate\Foundation\Testing\Concerns\InteractsWithConsole;
 use MuhamedDidovic\Shortener\Models\Link;
 use Orchestra\Testbench\TestCase as Orchestra;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -113,5 +115,19 @@ abstract class TestCase extends Orchestra
             'created_at',
             'updated_at',
         ], \Schema::getColumnListing(config('shortener.table')));
+    }
+
+    /**
+     * Disable mocking the console output.
+     *
+     * @return $this
+     */
+    protected function withoutMockingConsoleOutput()
+    {
+        $this->mockConsoleOutput = false;
+
+        $this->app->offsetUnset(OutputStyle::class);
+
+        return $this;
     }
 }
