@@ -3,7 +3,6 @@
 namespace MuhamedDidovic\Shortener\Test;
 
 use Illuminate\Console\OutputStyle;
-use Illuminate\Foundation\Testing\Concerns\InteractsWithConsole;
 use MuhamedDidovic\Shortener\Models\Link;
 use Orchestra\Testbench\TestCase as Orchestra;
 use Illuminate\Foundation\Testing\RefreshDatabase;
