@@ -33,9 +33,23 @@ Via Composer
 $ composer require muhamed-didovic/shortener-frank
 ```
 
-Once installed, if you are not using automatic package discovery, then you need to register the `MuhamedDidovic\Shortener\ShortenerServiceProvider` service provider in your `config/app.php`,
+Once installed, if you are not using automatic package discovery, then you need to register the `MuhamedDidovic\Shortener\ShortenerServiceProvider` service provider in your `config/app.php` like this:
 
-Optinally add to aliases `'Shortener' => MuhamedDidovic\\Shortener\\Facades\\Shortener::class` 
+```php
+'providers' => [
+    ...
+    MuhamedDidovic\Shortener\ShortenerServiceProvider::class
+]    
+``` 
+
+You can also optionally alias our facade:
+
+```php
+'aliases' => [
+    ...
+    'Shortener' => MuhamedDidovic\\Shortener\\Facades\\Shortener::class
+]    
+``` 
 
 <a name="configuration"></a>
 
@@ -102,6 +116,40 @@ return [
 ];
 ```
 
+If there is need to change or configure something in frontend (js, css, view files) you need to do the following:
+
+1st step, you need to publish them first:
+
+```bash
+php artisan vendor:publish --provider="MuhamedDidovic\Shortener\ShortenerServiceProvider" --tag="shortener::views"
+php artisan vendor:publish --provider="MuhamedDidovic\Shortener\ShortenerServiceProvider" --tag="shortener::assets"
+```
+
+View file will be placed in `resources/views/vendor/` folder with the name: `shortener-view.blade.php`
+
+Asset files will be placed in `resources/js/` and `resources/sass/` folders.
+
+####TODO place image here
+ 
+Besides files in resources folder there are two more files `shortener.js` and `shortener.css` that will be placed inside public folder:
+
+####TODO place image here
+
+These two files are based on resources folders `resources/js` and `resources/sass`
+ 
+2nd step, you need to install npm dependencies in `devDependencies`
+
+```js
+    npm install vue-template-compiler@^2.6.10 clipboard@^1.6.1 pluralize@^4.0.0 vue@^2.2.6 vue-axios@^2.1.4 vue-router@^2.3.1, vuex@^2.3.1 --save-dev
+```
+
+3rd step, you need to add files to bundle in webpack.mix.js
+
+```js
+mix.js('resources/js/shortener.js', 'public/js/shortener.js')
+    .sass('resources/sass/shortener.scss', 'public/css/shortener.css');
+```
+ 
 
 ## Usage
 
