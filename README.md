@@ -17,7 +17,9 @@ file and change them however you will.
 * [Installation](#installation)
 * [Configuration](#configuration)
 * [Frontend configuration](#fronend-configuration)
-* [Retrieve link](#retrieve-link)
+* [Usage](#usage)
+* [Change log](#change-log)
+* [Testing](#testing)
 * [Contribution](#contribution)
 
 <a name="installation"></a>
@@ -95,17 +97,17 @@ return [
      */
     'routes' => [
         /*
-         * Route used to store url
+         * Route used to store url with post request
          */
         'post_short_route' => 'short',
 
         /*
-         * Rotued to get shortend url
+         * Route to get shortend url with get request
          */
         'get_short_route'  => 'short',
 
         /*
-         * Route to get status of url provided
+         * Route to get status of url provided with get request
          */
         'get_stats_route'  => 'stats',
 
@@ -113,7 +115,7 @@ return [
          * Route to serve Vue instance
          */
         'vue_route'        => '{any?}',
-    ],
+    ]
 ];
 ```
 
@@ -184,17 +186,52 @@ npm run dev
  npm run watch
  ```
 
+<a name="usage"></a>
+
 ## Usage
 
+In order to use this package in your application there are 4 routes in web.php file that you need to get familiar
 
-``` php
-$skeleton = new MuhamedDidovic\Shortener();
-echo $skeleton->echoPhrase('Hello, League!');
+Below is web.php file where are the routes
+
+```php
+Route::group(
+    [
+        'namespace'  => 'MuhamedDidovic\Shortener\Controllers',
+        'middleware' => 'MuhamedDidovic\Shortener\Middleware\ModifiesUrlRequestData',
+    ],
+    function () {
+        //save url
+        Route::post(config('shortener.routes.post_short_route'), 'LinkController@store');
+        //get url
+        Route::get(config('shortener.routes.get_short_route'), 'LinkController@show');
+        //get stats
+        Route::get(config('shortener.routes.get_stats_route'), 'LinkStatsController@show');
+        //ROUTE for vue
+        Route::get(config('shortener.routes.vue_route'), 'SinglePageController@show')->where('any', '.*');
+    }
+);
 ```
 
+All endpoints routes are stored inside of shortener.php config file.
+First three routes are more API based and return JSON results.
+
+First two routes from web.php have `short` default endpoint, first one is used to store and shorten URL, second is used to retrieve URL by code what we provide.
+Third route have `stats` default endpoint and is used to get stats for particualar URL.
+
+Last fourth route (`/` is default endpoint) and is used for Vue.js to show view. 
+
+### Important Node
+Because there is `/` route to show view with the form element and probably it is used already in your project so you can change
+in shortener.php config file that route with endpoint that you want or you can comment/remove your `/` route 
+  
+<a name="change-log"></a>  
+  
 ## Change log
 
 Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
+
+<a name="testing"></a>
 
 ## Testing
 

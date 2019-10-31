@@ -26,17 +26,17 @@ return [
      */
     'routes' => [
         /*
-         * Route used to store url
+         * Route used to store url with post request
          */
         'post_short_route' => 'short',
 
         /*
-         * Rotued to get shortend url
+         * Route to get shortend url with get request
          */
         'get_short_route'  => 'short',
 
         /*
-         * Route to get status of url provided
+         * Route to get status of url provided with get request
          */
         'get_stats_route'  => 'stats',
 
