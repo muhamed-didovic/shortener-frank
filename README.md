@@ -136,22 +136,19 @@ The first command above is for view file and it will be placed in `resources/vie
 
 It should be like this:
 
-####TODO place image here
+![alt view file](https://raw.githubusercontent.com/muhamed-didovic/shortener-frank/master/docs/view.png)
 
 Second command is publishing js and css into `resources` and `public` folder.
 
-This is needed when we make changes to js or css files in `resources` folder those files will be bundled and placed inside `public` folder
+This is needed when we make changes to js or css files in `resources` folder, those files will be bundled and placed inside `public` folder
 
 js and css files in `resources` folder should look like this:
 
-
-####TODO place image here
+![alt resources files](https://raw.githubusercontent.com/muhamed-didovic/shortener-frank/master/docs/resources.png)
  
 Besides files in resources folder there are two more files `shortener.js` and `shortener.css` that will be placed inside public folder:
 
-####TODO place image here
-
-These two files are based on resources folders `resources/js` and `resources/sass`
+![alt resources files](https://raw.githubusercontent.com/muhamed-didovic/shortener-frank/master/docs/public.png)
  
 ### 2nd step, you need to install npm dependencies in package.json file
 
