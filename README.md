@@ -125,7 +125,9 @@ If there is need to change or configure something in frontend (js, css, view fil
 
 Frontend Configuration
 
-### 1st step, you need to publish frontend files(js, css and view) first:
+### 1st step
+
+you need to publish frontend files(js, css and view) first:
 
 ```bash
 php artisan vendor:publish --provider="MuhamedDidovic\Shortener\ShortenerServiceProvider" --tag="shortener::views"
@@ -136,7 +138,8 @@ The first command above is for view file and it will be placed in `resources/vie
 
 It should be like this:
 
-![alt view file](https://raw.githubusercontent.com/muhamed-didovic/shortener-frank/master/docs/view.png)
+<img src="https://raw.githubusercontent.com/muhamed-didovic/shortener-frank/master/docs/view.png" width="200">
+
 
 Second command is publishing js and css into `resources` and `public` folder.
 
@@ -144,26 +147,32 @@ This is needed when we make changes to js or css files in `resources` folder, th
 
 js and css files in `resources` folder should look like this:
 
-![alt resources files](https://raw.githubusercontent.com/muhamed-didovic/shortener-frank/master/docs/resources.png)
+<img src="https://raw.githubusercontent.com/muhamed-didovic/shortener-frank/master/docs/resources.png" width="200">
  
 Besides files in resources folder there are two more files `shortener.js` and `shortener.css` that will be placed inside public folder:
 
-![alt resources files](https://raw.githubusercontent.com/muhamed-didovic/shortener-frank/master/docs/public.png)
- 
-### 2nd step, you need to install npm dependencies in package.json file
+<img src="https://raw.githubusercontent.com/muhamed-didovic/shortener-frank/master/docs/public.png" width="200">
+
+### 2nd step
+
+you need to install npm dependencies in package.json file
 
 ```bash
 npm install vue-template-compiler@2.6.10 clipboard@1.6.1 pluralize@4.0.0 vue@2.2.6 vue-axios@2.1.4 vue-router@2.3.1 vuex@2.3.1 --save-dev
 ```
 
-### 3rd step, you need to add files to bundle in webpack.mix.js
+### 3rd step
+ 
+you need to add files to bundle in webpack.mix.js
 
 ```js
 mix.js('resources/js/shortener.js', 'public/js/shortener.js')
     .sass('resources/sass/shortener.scss', 'public/css/shortener.css');
 ```
 
-### 4th step, run the laravel mix, you can check package.json in `scripts` part for commands like
+### 4th step
+
+run the laravel mix, you can check package.json in `scripts` part for commands like
 
 ```bash
 npm run dev
