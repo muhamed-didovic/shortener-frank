@@ -11,11 +11,12 @@
 This Laravel package allows you to shorten a URL, it comes also with frontend part which is done in vue.js and vuex.
 You can publish all files like: views, config, migrations this is backend related and for frontend you can publish js and css 
 file and change them however you will.
+
 **Basic Docs**
 
 * [Installation](#installation)
 * [Configuration](#configuration)
-* [Chain providers](#chain-providers)
+* [Frontend configuration](#fronend-configuration)
 * [Retrieve link](#retrieve-link)
 * [Contribution](#contribution)
 
@@ -116,18 +117,33 @@ return [
 ];
 ```
 
+Frontend configuration
+
 If there is need to change or configure something in frontend (js, css, view files) you need to do the following:
 
-### 1st step, you need to publish them first:
+<a name="frontend-configuration"></a>
+
+Frontend Configuration
+
+### 1st step, you need to publish frontend files(js, css and view) first:
 
 ```bash
 php artisan vendor:publish --provider="MuhamedDidovic\Shortener\ShortenerServiceProvider" --tag="shortener::views"
 php artisan vendor:publish --provider="MuhamedDidovic\Shortener\ShortenerServiceProvider" --tag="shortener::assets"
 ```
 
-View file will be placed in `resources/views/vendor/` folder with the name: `shortener-view.blade.php`
+The first command above is for view file and it will be placed in `resources/views/vendor/` folder with the name: `shortener.blade.php`
 
-Asset files will be placed in `resources/js/` and `resources/sass/` folders.
+It should be like this:
+
+####TODO place image here
+
+Second command is publishing js and css into `resources` and `public` folder.
+
+This is needed when we make changes to js or css files in `resources` folder those files will be bundled and placed inside `public` folder
+
+js and css files in `resources` folder should look like this:
+
 
 ####TODO place image here
  
