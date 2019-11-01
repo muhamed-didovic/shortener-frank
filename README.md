@@ -9,8 +9,8 @@
 [![Total Downloads][ico-downloads]][link-downloads]
 
 This Laravel package allows you to shorten a URL, it comes also with frontend part which is done in vue.js and vuex.
-You can publish all files like: views, config, migrations this is backend related and for frontend you can publish js and css 
-file and change them however you will.
+You can publish all files like: views, config, migrations for frontend you can publish js and css 
+file and adjust them accordigly.
 
 **Basic Docs**
 
@@ -119,13 +119,9 @@ return [
 ];
 ```
 
-Frontend configuration
-
-If there is need to change or configure something in frontend (js, css, view files) you need to do the following:
-
 <a name="frontend-configuration"></a>
 
-Frontend Configuration
+## Frontend Configuration
 
 ### 1st step
 
@@ -151,7 +147,7 @@ js and css files in `resources` folder should look like this:
 
 <img src="https://raw.githubusercontent.com/muhamed-didovic/shortener-frank/master/docs/resources.png" width="200">
  
-Besides files in resources folder there are two more files `shortener.js` and `shortener.css` that will be placed inside public folder:
+And the bundled files that are generated from `resources` folder will be placed in `public` folder:
 
 <img src="https://raw.githubusercontent.com/muhamed-didovic/shortener-frank/master/docs/public.png" width="200">
 
@@ -213,24 +209,19 @@ Route::group(
 );
 ```
 
-All endpoints routes are stored inside of shortener.php config file.
+All endpoints are stored inside of shortener.php config file.
 First three routes are more API based and return JSON results.
 
-First two routes from web.php have `short` default endpoint, first one is used to store and shorten URL, second is used to retrieve URL by code what we provide.
-Third route have `stats` default endpoint and is used to get stats for particualar URL.
+First two routes from web.php have (`'short'`) default endpoint option, first one is used to store and shorten URL, second is used to retrieve URL by code what we provide.
+Third route have  (`'stats'`) default endpoint option and is used to get stats for particualar URL.
 
-Last fourth route (`/` is default endpoint) and is used for Vue.js to show view. 
+Last fourth route (`'/'`) is default endpoint option and is used for Vue.js to show view. 
 
 ### Important Node
-Because there is `/` route to show view with the form element and probably it is used already in your project so you can change
-in shortener.php config file that route with endpoint that you want or you can comment/remove your `/` route 
+Because there is (`'/'`) route to show view with the form element and probably it is used already in your project so you can change
+in shortener.php config file that option with endpoint that you want or you can comment/remove your (`'/'`) route 
 
-Another info you can change name of table (default table name is `links`) in shortener.php config and also which URL should be used for redirecting,
-default is:
-
-```
- 'url' => env('APP_URL', 'http://frank.test'),
-``` 
+Another info default table name is (`'links'`) which can be changed in shortener.php config file nad also there is (`'URL'`) option, it should be used for redirecting, 
   
 <a name="change-log"></a>  
   
