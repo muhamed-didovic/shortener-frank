@@ -16,11 +16,11 @@ file and adjust them accordigly.
 
 * [Installation](#installation)
 * [Configuration](#configuration)
-* [Frontend configuration](#fronend-configuration)
+* [Frontend configuration](#frontend-configuration)
 * [Usage](#usage)
 * [Change log](#change-log)
 * [Testing](#testing)
-* [Contribution](#contribution)
+* [Contributing](#contributing)
 
 <a name="installation"></a>
 
@@ -138,7 +138,6 @@ It should be like this:
 
 <img src="https://raw.githubusercontent.com/muhamed-didovic/shortener-frank/master/docs/view.png" width="200">
 
-
 Second command is publishing js and css into `resources` and `public` folder.
 
 This is needed when we make changes to js or css files in `resources` folder, those files will be bundled and placed inside `public` folder
@@ -236,6 +235,8 @@ Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed re
 ``` bash
 $ composer test
 ```
+
+<a name="contributing"></a>
 
 ## Contributing
 
