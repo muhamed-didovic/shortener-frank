@@ -30,7 +30,7 @@ class ShortenerServiceProvider extends ServiceProvider
          * Optional methods to load your package assets
          */
         $source = realpath($raw = __DIR__.'/../config/shortener.php') ?: $raw;
-        $this->loadViewsFrom(__DIR__.'/views', 'shortener');
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'shortener');
         $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
 
