@@ -15,9 +15,10 @@ file and adjust them accordigly.
 **Basic Docs**
 
 * [Installation](#installation)
+* [Usage](#usage)
 * [Configuration](#configuration)
 * [Frontend configuration](#frontend-configuration)
-* [Usage](#usage)
+* [Routes](#routes)
 * [Change log](#change-log)
 * [Testing](#testing)
 * [Contributing](#contributing)
@@ -53,6 +54,30 @@ You can also optionally alias our facade:
     'Shortener' => MuhamedDidovic\Shortener\Facades\Shortener::class
 ]    
 ``` 
+
+<a name="usage"></a>
+
+## Usage
+
+After you install the package, you need to run bellow commands in order to make it working, after that I'll give more info about configuration and usage.
+ 
+First step, run command which is responsible for publishing js and css into `resources` and `public` folder.
+
+```bash
+php artisan vendor:publish --provider="MuhamedDidovic\Shortener\ShortenerServiceProvider" --tag="shortener::assets"
+``` 
+
+Second step is to migrate DB and get the (`'links'`) table (this can be changed in (`'shortener.php'`) config file) where URLs will be stored
+ 
+```bash
+php artisan migrate
+``` 
+
+Third step is that you check your (`'.env'`) file and check (`'APP_URL'`) option, this is used by default for shortend url, also you can change or override that in (`'shortener.php'`) config file
+
+Fourth step, in order to serve view file and Vue.js all together, 
+you'll need a route, by default that route is (`'{any?}'`), 
+so just type any URL that you don't have in your routes  
 
 <a name="configuration"></a>
 
@@ -181,13 +206,11 @@ npm run dev
  npm run watch
  ```
 
-<a name="usage"></a>
+<a name="routes"></a>
 
-## Usage
+## Available routes and their explanations
 
-In order to use this package in your application there are 4 routes in web.php file that you need to get familiar
-
-Below is web.php file where are the routes
+This package consists of 4 routes:
 
 ```php
 Route::group(
@@ -209,18 +232,12 @@ Route::group(
 ```
 
 All endpoints are stored inside of shortener.php config file.
-First three routes are more API based and return JSON results.
+First three routes are API based and return JSON results.
 
 First two routes from web.php have (`'short'`) default endpoint option, first one is used to store and shorten URL, second is used to retrieve URL by code what we provide.
 Third route have  (`'stats'`) default endpoint option and is used to get stats for particualar URL.
 
-Last fourth route (`'/'`) is default endpoint option and is used for Vue.js to show view. 
-
-### Important Node
-Because there is (`'/'`) route to show view with the form element and probably it is used already in your project so you can change
-in shortener.php config file that option with endpoint that you want or you can comment/remove your (`'/'`) route 
-
-Another info default table name is (`'links'`) which can be changed in shortener.php config file nad also there is (`'URL'`) option, it should be used for redirecting, 
+Last fourth route (`'{any?}'`) is default endpoint option and is used for Vue.js to show view. 
   
 <a name="change-log"></a>  
   
