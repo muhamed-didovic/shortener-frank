@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace MuhamedDidovic\Shortener\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use MuhamedDidovic\Shortener\Exceptions\CodeGenerationException;
 use MuhamedDidovic\Shortener\Facades\Shortener;
 use MuhamedDidovic\Shortener\Traits\Eloquent\TouchesTimestamps;
-use MuhamedDidovic\Shortener\Exceptions\CodeGenerationException;
 
 /**
  * Class Link.

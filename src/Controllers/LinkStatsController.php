@@ -6,9 +6,9 @@ namespace MuhamedDidovic\Shortener\Controllers;
 
 use Cache;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller as BaseController;
 use MuhamedDidovic\Shortener\Models\Link;
 use MuhamedDidovic\Shortener\Traits\Response;
-use Illuminate\Routing\Controller as BaseController;
 
 /**
  * Class LinkStatsController.

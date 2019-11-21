@@ -3,10 +3,10 @@
 namespace MuhamedDidovic\Shortener\Test;
 
 use Illuminate\Console\OutputStyle;
-use MuhamedDidovic\Shortener\Models\Link;
-use Orchestra\Testbench\TestCase as Orchestra;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use MuhamedDidovic\Shortener\Models\Link;
 use MuhamedDidovic\Shortener\ShortenerServiceProvider;
+use Orchestra\Testbench\TestCase as Orchestra;
 
 abstract class TestCase extends Orchestra
 {

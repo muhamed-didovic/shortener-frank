@@ -2,9 +2,9 @@
 
 namespace MuhamedDidovic\Shortener\Controllers;
 
+use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Cache;
 use MuhamedDidovic\Shortener\Models\Link;
-use Illuminate\Routing\Controller as BaseController;
 
 /**
  * Class SinglePageController.
