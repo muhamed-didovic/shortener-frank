@@ -50,7 +50,7 @@ You can also optionally alias our facade:
 ```php
 'aliases' => [
     ...
-    'Shortener' => MuhamedDidovic\\Shortener\\Facades\\Shortener::class
+    'Shortener' => MuhamedDidovic\Shortener\Facades\Shortener::class
 ]    
 ``` 
 
