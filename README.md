@@ -50,7 +50,7 @@ You can also optionally alias our facade:
 ```php
 'aliases' => [
     ...
-    'Shortener' => MuhamedDidovic\\Shortener\\Facades\\Shortener::class
+    'Shortener' => MuhamedDidovic\Shortener\Facades\Shortener::class
 ]    
 ``` 
 
@@ -83,36 +83,36 @@ This is the contents of the published config file:
 ```php
 return [
     /*
-     * Name of table where links or URLs should be stored
+     * The name of the table where the links or the URLs should be stored
      */
     'table'  => 'links',
 
     /*
-     * Url that should be used with shortened string
+     * Url that should be used with the shortened string
      */
     'url'    => env('APP_URL', 'http://frank.test'),
 
     /*
-     * Routes used in package
+     * Routes used in the package
      */
     'routes' => [
         /*
-         * Route used to store url with post request
+         * Route used to store url with the post request
          */
         'post_short_route' => 'short',
 
         /*
-         * Route to get shortend url with get request
+         * Route to get shortend url with the get request
          */
         'get_short_route'  => 'short',
 
         /*
-         * Route to get status of url provided with get request
+         * Route to get status of the url provided with the get request
          */
         'get_stats_route'  => 'stats',
 
         /*
-         * Route to serve Vue instance
+         * Route to serve the Vue instance
          */
         'vue_route'        => '{any?}',
     ]
