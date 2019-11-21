@@ -44,5 +44,5 @@ return [
          * Route to serve Vue instance
          */
         'vue_route'        => '{any?}',
-    ]
+    ],
 ];
