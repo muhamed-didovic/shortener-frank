@@ -12,17 +12,17 @@ declare(strict_types=1);
 
 return [
     /*
-     * Name of table where links should be stored
+     * Name of table where the links or the URLs should be stored
      */
     'table'  => 'links',
 
     /*
-     * Url that should be used with shortened string
+     * Url that should be used with the shortened string
      */
     'url'    => env('APP_URL', 'http://frank.test'),
 
     /*
-     * Routes used in package
+     * Routes used in the package
      */
     'routes' => [
         /*
@@ -44,5 +44,5 @@ return [
          * Route to serve Vue instance
          */
         'vue_route'        => '{any?}',
-    ],
+    ]
 ];
