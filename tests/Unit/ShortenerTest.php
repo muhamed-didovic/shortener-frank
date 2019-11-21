@@ -2,8 +2,8 @@
 
 namespace MuhamedDidovic\Shortener\Test\Unit;
 
-use MuhamedDidovic\Shortener\Test\TestCase;
 use MuhamedDidovic\Shortener\Facades\Shortener;
+use MuhamedDidovic\Shortener\Test\TestCase;
 
 class ShortenerTest extends TestCase
 {

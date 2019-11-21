@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace MuhamedDidovic\Shortener;
 
-use Illuminate\Support\ServiceProvider;
-use MuhamedDidovic\Shortener\Models\Link;
-use Laravel\Lumen\Application as LumenApplication;
-use MuhamedDidovic\Shortener\Observers\LinkObserver;
-use MuhamedDidovic\Shortener\Console\ShortenerCommand;
 use Illuminate\Foundation\Application as LaravelApplication;
+use Illuminate\Support\ServiceProvider;
+use Laravel\Lumen\Application as LumenApplication;
+use MuhamedDidovic\Shortener\Console\ShortenerCommand;
+use MuhamedDidovic\Shortener\Models\Link;
+use MuhamedDidovic\Shortener\Observers\LinkObserver;
 
 class ShortenerServiceProvider extends ServiceProvider
 {

@@ -6,8 +6,8 @@ namespace MuhamedDidovic\Shortener\Observers;
 
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Cache;
-use MuhamedDidovic\Shortener\Models\Link;
 use MuhamedDidovic\Shortener\Exceptions\CodeGenerationException;
+use MuhamedDidovic\Shortener\Models\Link;
 
 class LinkObserver
 {
