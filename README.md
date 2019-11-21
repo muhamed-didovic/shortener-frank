@@ -12,6 +12,8 @@ This Laravel package allows you to shorten a URL, it comes also with frontend pa
 You can publish all files like: views, config, migrations for frontend you can publish js and css 
 file and adjust them accordigly.
 
+<img src="https://raw.githubusercontent.com/muhamed-didovic/shortener-frank/master/docs/usage.gif">
+
 **Basic Docs**
 
 * [Installation](#installation)
@@ -57,7 +59,7 @@ You can also optionally alias our facade:
 
 <a name="usage"></a>
 
-## Usage
+## Usage and next steps
 
 After you install the package, you need to run bellow commands in order to make it working, after that I'll give more info about configuration and usage.
  
@@ -67,13 +69,13 @@ First step, run command which is responsible for publishing js and css into `res
 php artisan vendor:publish --provider="MuhamedDidovic\Shortener\ShortenerServiceProvider" --tag="shortener::assets"
 ``` 
 
-Second step is to migrate DB and get the (`'links'`) table (this can be changed in (`'shortener.php'`) config file) where URLs will be stored
+Second step, migrate DB and get the (`'links'`) table (this can be changed in (`'shortener.php'`) config file) where URLs will be stored:
  
 ```bash
 php artisan migrate
 ``` 
 
-Third step is that you check your (`'.env'`) file and check (`'APP_URL'`) option, this is used by default for shortend url, also you can change or override that in (`'shortener.php'`) config file
+Third step, check your (`'.env'`) file and check (`'APP_URL'`) option, this is used by default for shortend url, also you can change or override that in (`'shortener.php'`) config file
 
 Fourth step, in order to serve view file and Vue.js all together, 
 you'll need a route, by default that route is (`'{any?}'`), 
@@ -237,7 +239,7 @@ First three routes are API based and return JSON results.
 First two routes from web.php have (`'short'`) default endpoint option, first one is used to store and shorten URL, second is used to retrieve URL by code what we provide.
 Third route have  (`'stats'`) default endpoint option and is used to get stats for particualar URL.
 
-Last fourth route (`'{any?}'`) is default endpoint option and is used for Vue.js to show view. 
+Last fourth route (`'{any?}'`) is default endpoint option and is used for Vue.js to show the view. 
   
 <a name="change-log"></a>  
   
