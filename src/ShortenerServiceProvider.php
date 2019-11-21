@@ -25,7 +25,6 @@ class ShortenerServiceProvider extends ServiceProvider
          */
         Link::observe(LinkObserver::class);
 
-        //        if ($this->app instanceof LaravelApplication && $this->app->runningInConsole()) {
         /*
          * Optional methods to load your package assets
          */
@@ -65,17 +64,6 @@ class ShortenerServiceProvider extends ServiceProvider
         $this->commands([
             ShortenerCommand::class,
         ]);
-
-        //        $this->publishes([
-        //            __DIR__ . '/views' => resource_path('views/vendor/shortener'),
-        //        ], 'shortener::view');
-        //            $this->publishes([
-        //                __DIR__.'/path/to/config/courier.php' => config_path('courier.php'),
-        //            ]);
-        //        }
-        //        elseif ($this->app instanceof LumenApplication) {
-        //            $this->app->configure('shortener');
-        //        }
     }
 
     /**
