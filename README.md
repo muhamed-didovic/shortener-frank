@@ -39,12 +39,12 @@ Via Composer
 $ composer require muhamed-didovic/shortener-frank
 ```
 
-Once installed, if you are not using automatic package discovery, then you need to register the `MuhamedDidovic\Shortener\ShortenerServiceProvider` service provider in your `config/app.php` like this:
+Once installed, if you are NOT using automatic package discovery (Laravel 5.4 and below), then you need to register the `MuhamedDidovic\Shortener\ShortenerServiceProvider` service provider in your `config/app.php` like this:
 
 ```php
 'providers' => [
     ...
-    MuhamedDidovic\Shortener\ShortenerServiceProvider::class
+    MuhamedDidovic\Shortener\ShortenerServiceProvider::class,
 ]    
 ``` 
 
@@ -53,7 +53,7 @@ You can also optionally alias our facade:
 ```php
 'aliases' => [
     ...
-    'Shortener' => MuhamedDidovic\Shortener\Facades\Shortener::class
+    'Shortener' => MuhamedDidovic\Shortener\Facades\Shortener::class,
 ]    
 ``` 
 
@@ -212,7 +212,7 @@ npm run dev
 
 ## Available routes and their explanations
 
-This package consists of 4 routes:
+This package consists of 4 routes (you don't need to include them into your routes):
 
 ```php
 Route::group(
