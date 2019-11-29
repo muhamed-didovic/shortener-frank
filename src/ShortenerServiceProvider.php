@@ -52,7 +52,7 @@ class ShortenerServiceProvider extends ServiceProvider
             __DIR__.'/../public/css'      => public_path('css/'),
             __DIR__.'/../public/js'       => public_path('js/'),
         ], 'shortener::assets');
-        
+
         // Registering package commands.
         $this->commands([
             ShortenerCommand::class,
