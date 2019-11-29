@@ -40,6 +40,23 @@ abstract class TestCase extends Orchestra
     }
 
     /**
+     * Get package aliases.  In a normal app environment these would be added to
+     * the 'aliases' array in the config/app.php file.  If your package exposes an
+     * aliased facade, you should add the alias here, along with aliases for
+     * facades upon which your package depends, e.g. Cartalyst/Sentry.
+     *
+     * @param \Illuminate\Foundation\Application $app
+     *
+     * @return array
+     */
+    protected function getPackageAliases($app)
+    {
+        return [
+            'Shortener' => 'MuhamedDidovic\Shortener\Facades\Shortener',
+        ];
+    }
+
+    /**
      * Define environment setup.
      *
      * @param \Illuminate\Foundation\Application $app
@@ -57,21 +74,18 @@ abstract class TestCase extends Orchestra
     }
 
     /**
-     * Get package aliases.  In a normal app environment these would be added to
-     * the 'aliases' array in the config/app.php file.  If your package exposes an
-     * aliased facade, you should add the alias here, along with aliases for
-     * facades upon which your package depends, e.g. Cartalyst/Sentry.
+     * Disable mocking the console output.
      *
-     * @param \Illuminate\Foundation\Application $app
-     *
-     * @return array
+     * @return $this
      */
-    //    protected function getPackageAliases($app)
-    //    {
-    //        return [
-    //            //'YourPackage' => 'YourProject\YourPackage\Facades\YourPackage',
-    //        ];
-    //    }
+    protected function withoutMockingConsoleOutput()
+    {
+        $this->mockConsoleOutput = false;
+
+        $this->app->offsetUnset(OutputStyle::class);
+
+        return $this;
+    }
 
     /** @test */
     public function it_runs_the_migrations()
@@ -114,19 +128,5 @@ abstract class TestCase extends Orchestra
             'created_at',
             'updated_at',
         ], \Schema::getColumnListing(config('shortener.table')));
-    }
-
-    /**
-     * Disable mocking the console output.
-     *
-     * @return $this
-     */
-    protected function withoutMockingConsoleOutput()
-    {
-        $this->mockConsoleOutput = false;
-
-        $this->app->offsetUnset(OutputStyle::class);
-
-        return $this;
     }
 }

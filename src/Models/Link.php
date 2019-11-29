@@ -37,6 +37,7 @@ class Link extends Model
     ];
 
     /**
+     * Override or change name of the table from config file
      * @return \Illuminate\Config\Repository|mixed|string
      */
     public function getTable()
@@ -45,6 +46,7 @@ class Link extends Model
     }
 
     /**
+     * Get the code from the ID of table
      * @return mixed|string
      * @throws CodeGenerationException
      */
@@ -58,6 +60,7 @@ class Link extends Model
     }
 
     /**
+     * Get resource by code
      * @param $code
      * @return mixed
      */
@@ -67,6 +70,7 @@ class Link extends Model
     }
 
     /**
+     * Get full new shortened URL with code
      * @return string|null
      */
     public function shortenedUrl()
